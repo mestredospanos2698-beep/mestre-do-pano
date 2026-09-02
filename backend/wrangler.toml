@@ -10,7 +10,7 @@ compatibility_date = "2026-06-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "mestre-do-pano-db"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "bf7613ba-d490-4300-a53b-66d13abb2a04"
 
 # --- Cron Trigger: mantém a tabela `stock` sincronizada com o catálogo -----
 # publicado, mesmo sem nenhuma encomenda acontecer entretanto.
@@ -20,10 +20,10 @@ crons = ["*/10 * * * *"]
 # --- Variáveis NÃO secretas (podem ir no repositório) -----------------------
 [vars]
 PAYPAL_ENVIRONMENT = "sandbox"
-ALLOWED_ORIGIN = "https://SEU-UTILIZADOR.github.io"
-PRODUCTS_URL = "https://SEU-UTILIZADOR.github.io/mestre-do-pano/data/products.json"
-SHIPPING_URL = "https://SEU-UTILIZADOR.github.io/mestre-do-pano/data/shipping.json"
-COUNTRIES_URL = "https://SEU-UTILIZADOR.github.io/mestre-do-pano/data/countries.json"
+ALLOWED_ORIGIN = "https://mestredospanos2698-beep.github.io"
+PRODUCTS_URL = "https://mestredospanos2698-beep.github.io/mestre-do-pano/data/products.json"
+SHIPPING_URL = "https://mestredospanos2698-beep.github.io/mestre-do-pano/data/shipping.json"
+COUNTRIES_URL = "https://mestredospanos2698-beep.github.io/mestre-do-pano/data/countries.json"
 CURRENCY = "EUR"
 
 # --- Logística real (Fase 6) -----------------------------------------------

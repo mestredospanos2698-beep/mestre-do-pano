@@ -14,7 +14,7 @@
  */
 
 window.MestreDoPanoConfig = {
-  API_BASE_URL: 'https://mestre-do-pano-api.SEU-SUBDOMINIO.workers.dev',
+  API_BASE_URL: 'https://mestre-do-pano-api.mestredopano.workers.dev',
   PAYPAL_CLIENT_ID: 'SANDBOX_CLIENT_ID_AQUI',
   PAYPAL_CURRENCY: 'EUR',
 };
