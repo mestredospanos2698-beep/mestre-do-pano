@@ -13,7 +13,11 @@
  *   a página de produto mostra um seletor de variações e atualiza título,
  *   foto, preço e stock em tempo real ao mudar de variação.
  *
- * FASE 6.5B — UI/UX FRONTEND:\n *   CATÁLOGO: 1 card por produto com badge "+X opções", apenas stock.\n *   PÁGINA: seletor dinâmico (cor/unidade), galeria thumbnails, preloading fade-in.\n *   ANIMAÇÕES: botão confirmação 1.5s + pulso carrinho, spinner numérico custom.\n */
+ * FASE 6.5B — UI/UX FRONTEND:
+ *   CATÁLOGO: 1 card por produto com badge "+X opções", apenas stock.
+ *   PÁGINA: seletor dinâmico (cor/unidade), galeria thumbnails, preloading fade-in.
+ *   ANIMAÇÕES: botão confirmação 1.5s + pulso carrinho, spinner numérico custom.
+ */
 
 const MestreDoPanoProducts = (() => {
   let cache = null;
@@ -27,7 +31,8 @@ const MestreDoPanoProducts = (() => {
     return cache;
   }
 
-  async function getById(id) {\n    const products = await loadAll();
+  async function getById(id) {
+    const products = await loadAll();
     return products.find((p) => p.id === id) || null;
   }
 
