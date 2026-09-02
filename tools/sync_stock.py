@@ -12,6 +12,7 @@ Uso:
 Configuração: ver config.json (copiar de config.example.json e editar).
 """
 
+import io
 import json
 import os
 import re
@@ -19,6 +20,14 @@ import shutil
 import sys
 import unicodedata
 from pathlib import Path
+
+# Windows (cp1252) nao consegue imprimir emojis (ex.: nos titulos de
+# produtos copiados do Excel) - forcar stdout/stderr para UTF-8 evita o
+# UnicodeEncodeError ao imprimir avisos/nomes de produtos com emoji.
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+if sys.stderr.encoding and sys.stderr.encoding.lower() != "utf-8":
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 import openpyxl
 
@@ -33,24 +42,25 @@ CAMPOS_INTERNOS = {"custo"}
 
 EXTENSOES_IMAGEM = {".jpg", ".jpeg", ".png", ".webp"}
 
-# --- Peso (Fase 4: coluna "Peso (g)" já existe no Stock.xlsx) -----------
+# --- Peso (coluna real do Stock.xlsx: "peso_kg", em QUILOGRAMAS) --------
 #
-# O proprietário da loja já adicionou a coluna "Peso (g)" ao Stock.xlsx,
-# com o peso (em GRAMAS) da unidade vendável de cada produto.
+# O proprietário da loja tem a coluna "peso_kg" no Stock.xlsx, com o peso
+# (em KG, ex.: 0,3 = 300 g) da unidade vendável de cada produto.
 #
-# Este script APENAS lê essa coluna. Nunca inventa, estima ou arredonda
+# Este script lê "peso_kg" e converte para GRAMAS (weight_g = peso_kg *
+# 1000), porque é essa a unidade usada internamente em todo o site
+# (products.json, pricing.js, portes). Nunca inventa, estima ou arredonda
 # pesos em falta — um produto sem peso válido fica identificado num aviso
-# e o campo "weight_g" fica a null no products.json, para o frontend e o
-# backend saberem que não devem confiar num peso inexistente.
-COLUNA_PESO = "Peso (g)"
+# e o campo "weight_g" fica a null no products.json.
+COLUNA_PESO = "peso_kg"
 
-# --- Unidades (Fase 5: coluna "Unidades" preenchida manualmente pelo dono) -
+# --- Unidades (coluna real do Stock.xlsx: "unidades") ---------------------
 #
 # Representa quantas unidades físicas estão incluídas numa unidade de venda
-# (ex.: "Pack de 5 panos" → Unidades = 5). É a partir desta coluna que o
-# preço por unidade é calculado (preco / Unidades) — o próprio site nunca
+# (ex.: "Pack de 6 panos" → unidades = 6). É a partir desta coluna que o
+# preço por unidade é calculado (preco / unidades) — o próprio site nunca
 # inventa nem assume este valor.
-COLUNA_UNIDADES = "Unidades"
+COLUNA_UNIDADES = "unidades"
 
 
 def resolver_unit_count(dados: dict):
@@ -87,7 +97,9 @@ def resolver_unit_count(dados: dict):
 
 def resolver_peso_g(dados: dict):
     """
-    Lê exclusivamente a coluna 'Peso (g)' do Excel.
+    Lê exclusivamente a coluna 'peso_kg' do Excel (valor em QUILOGRAMAS,
+    ex.: 0,3 = 300 g) e converte para GRAMAS (weight_g), a unidade usada
+    internamente em todo o site.
 
     Devolve (weight_g: int|None, motivo_invalido: str|None).
     weight_g só é devolvido quando o valor é numérico e > 0.
@@ -99,20 +111,14 @@ def resolver_peso_g(dados: dict):
 
     texto = str(valor).strip()
 
-    # Rejeita texto misturado com números (ex.: "82 gramas") — só aceita
+    # Rejeita texto misturado com números (ex.: "0,3 kg") — só aceita
     # algo que seja diretamente conversível para número.
     try:
-        numero = float(texto.replace(",", "."))
+        peso_kg = float(texto.replace(",", "."))
     except (TypeError, ValueError):
         return None, f"valor não numérico ({texto!r})"
 
-    if numero != int(numero):
-        # Excel pode ter, por engano, um valor com casas decimais — grama
-        # inteira é o formato esperado; ainda assim aceitamos e arredondamos
-        # apenas se for claramente um erro de formatação (ex.: 82.0).
-        pass
-
-    peso_g = int(round(numero))
+    peso_g = round(peso_kg * 1000)
 
     if peso_g <= 0:
         return None, f"valor inválido (<= 0): {texto!r}"
