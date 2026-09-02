@@ -1,5 +1,5 @@
 /**
- * Mestre do Pano — products.js (Fase 6.5)
+ * Mestre do Pano — products.js (Fase 6.5B)
  * Carrega data/products.json (gerado por tools/sync_stock.py a partir do
  * Stock.xlsx) e trata da listagem, filtros e página individual de produto.
  *
@@ -12,7 +12,8 @@
  *   O catálogo mostra sempre 1 card por produto (mesmo quando agrupado);
  *   a página de produto mostra um seletor de variações e atualiza título,
  *   foto, preço e stock em tempo real ao mudar de variação.
- */
+ *
+ * FASE 6.5B — UI/UX FRONTEND:\n *   CATÁLOGO: 1 card por produto com badge "+X opções", apenas stock.\n *   PÁGINA: seletor dinâmico (cor/unidade), galeria thumbnails, preloading fade-in.\n *   ANIMAÇÕES: botão confirmação 1.5s + pulso carrinho, spinner numérico custom.\n */
 
 const MestreDoPanoProducts = (() => {
   let cache = null;
@@ -26,8 +27,7 @@ const MestreDoPanoProducts = (() => {
     return cache;
   }
 
-  async function getById(id) {
-    const products = await loadAll();
+  async function getById(id) {\n    const products = await loadAll();
     return products.find((p) => p.id === id) || null;
   }
 
@@ -49,19 +49,6 @@ const MestreDoPanoProducts = (() => {
     return product.stock;
   }
 
-  /** Badge "+N cores disponíveis" / "+N opções de tamanho" no card do catálogo. */
-  function getVariationBadge(product) {
-    if (!isGrouped(product)) return '';
-    const count = product.variations.length;
-    if (product.variation_type === 'cor') {
-      return `+${count} cor${count === 1 ? '' : 'es'} disponíve${count === 1 ? 'l' : 'is'}`;
-    }
-    if (product.variation_type === 'quantidade') {
-      return `+${count} opç${count === 1 ? 'ão' : 'ões'} de tamanho`;
-    }
-    return `+${count} variações`;
-  }
-
   function hasUnitPricingGeneric(price, unitCount) {
     return typeof unitCount === 'number' && unitCount > 1;
   }
@@ -71,12 +58,15 @@ const MestreDoPanoProducts = (() => {
     return `${formatPrice(price / unitCount)} / unidade`;
   }
 
+  // ---- CATÁLOGO (Fase 6.5B) ----
+  // 1 card por produto, badge "+X opções", apenas stock, sem preço unitário
+
   function cardTemplate(product) {
     const priceLabel = formatPrice(product.price);
     const totalStock = getTotalStock(product);
     const stock = stockLabel(totalStock);
     const firstImage = product.images && product.images[0];
-    const badge = getVariationBadge(product);
+    const variationCount = isGrouped(product) ? product.variations.length : 0;
 
     return `
       <a class="product-card" href="product.html?id=${encodeURIComponent(product.id)}">
@@ -84,13 +74,11 @@ const MestreDoPanoProducts = (() => {
           ${firstImage
             ? `<img src="${firstImage}" alt="${product.name}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'), { className: 'placeholder-pattern', ariaHidden: 'true' }))">`
             : '<div class="placeholder-pattern" aria-hidden="true"></div>'}
-          ${badge ? `<span class="variation-badge">${badge}</span>` : ''}
+          ${variationCount > 0 ? `<span class="variation-badge">+${variationCount} opções</span>` : ''}
         </div>
         <h3>${product.name}</h3>
         <p class="price">${priceLabel}</p>
-        ${!isGrouped(product) && hasUnitPricing(product) ? `<p class="unit-price-inline">${unitPriceInlineText(product)}</p>` : ''}
         <p class="stock-note ${stock.className}">${stock.text}</p>
-        ${!isGrouped(product) && product.color ? `<p class="variant-note">${product.color}</p>` : ''}
       </a>
     `;
   }
@@ -157,11 +145,9 @@ const MestreDoPanoProducts = (() => {
     applyFilters();
   }
 
-  // ---------------------------------------------------------------------
-  // Página de produto individual (com seletor de variações — Fase 6.5)
-  // ---------------------------------------------------------------------
+  // ---------- Página de produto individual (Fase 6.5B) ----------
 
-  /** Nomes de cor conhecidos → cor CSS aproximada, para os swatches circulares. */
+  /** Nomes de cor conhecidos → cor CSS. */
   const COLOR_HEX_MAP = {
     verde: '#3f7a4f',
     lilás: '#b79fd6',
@@ -187,7 +173,7 @@ const MestreDoPanoProducts = (() => {
     return COLOR_HEX_MAP[chave] || '#c7b287';
   }
 
-  /** Gera o HTML do seletor de variações (swatches de cor ou pills de quantidade). */
+  /** Seletor dinâmico de variações (cor: swatches | quantidade: pills). */
   function variationSelectorTemplate(product, selectedVariation) {
     if (!isGrouped(product)) return '';
 
@@ -236,7 +222,7 @@ const MestreDoPanoProducts = (() => {
     `;
   }
 
-  /** Galeria estilo Temu: foto grande + barra de miniaturas. */
+  /** Galeria estilo Temu: foto grande + thumbnails (Fase 6.5B: fade-in, preload). */
   function galleryTemplate(fotos, nomeProduto) {
     if (!fotos || fotos.length === 0) {
       return {
@@ -244,7 +230,7 @@ const MestreDoPanoProducts = (() => {
         thumbsHtml: '',
       };
     }
-    const mainHtml = `<img src="${fotos[0]}" alt="${nomeProduto}" data-gallery-main onerror="this.style.display='none'">`;
+    const mainHtml = `<img src="${fotos[0]}" alt="${nomeProduto}" data-gallery-main loading="eager" style="opacity: 1; transition: opacity 0.15s ease;" onerror="this.style.display='none'">`;
     const thumbsHtml = fotos.length > 1
       ? `
         <div class="gallery-thumbs" data-gallery-thumbs>
@@ -299,6 +285,10 @@ const MestreDoPanoProducts = (() => {
       if (grouped) return `${product.name} ${selectedVariation.variacao}`.trim();
       return product.name;
     }
+    function currentDescription() {
+      if (grouped && selectedVariation.descricao) return selectedVariation.descricao;
+      return product.description;
+    }
 
     function render() {
       document.title = `${currentTitle()} — Mestre do Pano`;
@@ -329,18 +319,16 @@ const MestreDoPanoProducts = (() => {
           ${variationSelectorTemplate(product, selectedVariation || {})}
 
           <div class="qty-row">
-            <div class="qty-stepper" data-qty-stepper>
-              <button type="button" data-qty-decrease aria-label="Diminuir quantidade" ${esgotado ? 'disabled' : ''}>–</button>
-              <input type="text" value="1" readonly data-qty-value inputmode="numeric">
-              <button type="button" data-qty-increase aria-label="Aumentar quantidade" ${esgotado ? 'disabled' : ''}>+</button>
-            </div>
+            <button type="button" class="qty-btn qty-decrease" data-qty-decrease aria-label="Diminuir quantidade" ${esgotado ? 'disabled' : ''}>−</button>
+            <input type="text" class="qty-input" value="1" readonly data-qty-value inputmode="numeric">
+            <button type="button" class="qty-btn qty-increase" data-qty-increase aria-label="Aumentar quantidade" ${esgotado ? 'disabled' : ''}>+</button>
             <button type="button" class="btn btn-primary" data-add-to-cart ${esgotado ? 'disabled' : ''}>
               ${esgotado ? 'Esgotado' : 'Adicionar ao carrinho'}
             </button>
           </div>
 
-          <div class="product-description">
-            <p>${product.description}</p>
+          <div class="product-description" data-product-description>
+            <p>${currentDescription()}</p>
           </div>
 
           <div class="product-meta">
@@ -363,7 +351,7 @@ const MestreDoPanoProducts = (() => {
     }
 
     function attachRowEvents() {
-      // Stepper de quantidade (limitado ao stock disponível)
+      // Stepper de quantidade (Fase 6.5B: botões [-] [ N ] [+])
       const qtyValue = root.querySelector('[data-qty-value]');
       root.querySelector('[data-qty-decrease]')?.addEventListener('click', () => {
         qty = Math.max(1, qty - 1);
@@ -375,7 +363,7 @@ const MestreDoPanoProducts = (() => {
         qtyValue.value = qty;
       });
 
-      // Miniaturas da galeria (Fase 6.5 — estilo Temu)
+      // Miniaturas da galeria: fade-in suave
       root.querySelectorAll('[data-gallery-thumb]').forEach((thumbBtn) => {
         thumbBtn.addEventListener('click', () => {
           const src = thumbBtn.dataset.src;
@@ -392,7 +380,7 @@ const MestreDoPanoProducts = (() => {
         });
       });
 
-      // Seletor de variações — reatividade total (título, foto, preço, stock)
+      // Seletor de variações: atualiza título, foto, preço, stock, descrição
       root.querySelectorAll('[data-variation-sku]').forEach((btn) => {
         btn.addEventListener('click', () => {
           if (btn.disabled) return;
@@ -405,8 +393,25 @@ const MestreDoPanoProducts = (() => {
         });
       });
 
-      // Adicionar ao carrinho
+      // Adicionar ao carrinho (Fase 6.5B: animação confirmação + pulso carrinho)
       root.querySelector('[data-add-to-cart]')?.addEventListener('click', () => {
+        const btn = root.querySelector('[data-add-to-cart]');
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Adicionado!';
+        btn.disabled = true;
+
+        // Pulso no carrinho
+        const cartCount = document.querySelector('.cart-count');
+        if (cartCount) {
+          cartCount.classList.add('pulse-animation');
+          setTimeout(() => cartCount.classList.remove('pulse-animation'), 600);
+        }
+
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 1500);
+
         window.MestreDoPanoCart.addItem({
           productId: product.id,
           name: currentTitle(),
@@ -424,7 +429,7 @@ const MestreDoPanoProducts = (() => {
 
   return {
     loadAll, getById, renderGrid, initShopPage, initProductPage,
-    isGrouped, getTotalStock, getVariationBadge,
+    isGrouped, getTotalStock,
   };
 })();
 

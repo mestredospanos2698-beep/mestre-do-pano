@@ -133,18 +133,22 @@
               <div data-pickup-point-section hidden>
                 <p class="pickup-point-label">Escolher ponto de recolha</p>
 
-                <!-- Geowidget InPost (Fase 6.5) — mapa interativo para escolher
+                <!-- Geowidget InPost (Fase 6.5B) — mapa interativo para escolher
                      o Ponto Pack/Locker. Só é carregado quando o método
                      selecionado for InPost e exigir ponto de recolha (ver
                      js/checkout.js → initInpostGeowidget()). Sem conta/token
                      InPost confirmados nesta fase (ver docs/shipping.md),
-                     este container mostra uma lista de pontos textual como
-                     fallback em vez do mapa. -->
+                     este container mostra uma lista de pontos com pesquisa
+                     interativa ordenada por proximidade (sem mapa pesado). -->
                 <div data-inpost-geowidget-container hidden>
                   <div id="inpost-geowidget" data-inpost-geowidget></div>
                 </div>
 
-                <div data-pickup-point-list></div>
+                <!-- Dropdown pesquisável de pontos (Fase 6.5B) -->
+                <div class="pickup-point-search">
+                  <input type="text" placeholder="Procurar ponto de recolha..." data-pickup-search-input class="pickup-search-input">
+                </div>
+                <div data-pickup-point-list class="pickup-point-list"></div>
                 <p class="field-error" data-error-for="ponto-recolha"></p>
                 <input type="hidden" name="ponto-recolha-id" data-pickup-point-id-input>
               </div>

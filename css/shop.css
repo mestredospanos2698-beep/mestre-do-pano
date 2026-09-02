@@ -1,6 +1,7 @@
 /* =========================================================
    Mestre do Pano — shop.css
    Página de loja (listagem + filtros) e página de produto
+   FASE 6.5B: animações, spinner custom, seletor dinâmico
    ========================================================= */
 
 /* ---------- Cabeçalho de página simples ---------- */
@@ -141,47 +142,43 @@
   margin: var(--space-md) 0;
 }
 
-.qty-stepper {
-  display: inline-flex;
-  align-items: stretch;
+/* Spinner numérico custom (Fase 6.5B): botões [-] [N] [+] */
+.qty-btn {
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--color-surface);
-}
-
-.qty-stepper button {
-  background: var(--color-surface);
-  border: none;
   width: 2.4rem;
   height: 2.4rem;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-family: var(--font-body);
   color: var(--color-primary);
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  padding: 0;
+  border-radius: var(--radius);
 }
 
-.qty-stepper button:hover:not(:disabled) {
+.qty-btn:hover:not(:disabled) {
   background: var(--color-bg);
+  border-color: var(--color-primary);
 }
 
-.qty-stepper button:disabled {
+.qty-btn:disabled {
   color: var(--color-border);
   cursor: not-allowed;
+  opacity: 0.6;
 }
 
-.qty-stepper input {
-  width: 2.8rem;
+.qty-input {
+  width: 3.2rem;
   text-align: center;
-  border: none;
-  border-left: 1px solid var(--color-border);
-  border-right: 1px solid var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--color-ink);
   background: var(--color-surface);
+  padding: 0.5rem;
 }
 
 .product-meta {
@@ -202,7 +199,7 @@
 .product-meta dt { font-weight: 600; color: var(--color-ink); }
 .product-meta dd { margin: 0; }
 
-/* ---------- Descrição do produto (Fase 6.5 — abaixo do botão) ---------- */
+/* ---------- Descrição do produto (Fase 6.5B — abaixo do botão) ---------- */
 
 .product-description {
   margin-top: var(--space-md);
@@ -212,7 +209,7 @@
   white-space: pre-line;
 }
 
-/* ---------- Accordion de avisos (Fase 6.5) ---------- */
+/* ---------- Accordion de avisos (Fase 6.5B: discreto no rodapé) ---------- */
 
 .product-accordion {
   margin-top: var(--space-md);
@@ -247,7 +244,7 @@
   white-space: pre-line;
 }
 
-/* ---------- Galeria estilo Temu: miniaturas (Fase 6.5) ---------- */
+/* ---------- Galeria estilo Temu: miniaturas (Fase 6.5B: fade-in, preload) ---------- */
 
 .product-gallery .main-image img {
   transition: opacity 0.15s ease;
@@ -281,7 +278,7 @@
   border-color: var(--color-primary);
 }
 
-/* ---------- Seletor de variações (Fase 6.5) ---------- */
+/* ---------- Seletor de variações (Fase 6.5B: dinâmico) ---------- */
 
 .variation-selector {
   margin: var(--space-md) 0;

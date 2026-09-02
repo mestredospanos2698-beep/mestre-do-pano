@@ -1,6 +1,7 @@
 /* =========================================================
    Mestre do Pano — checkout.css
    Carrinho e checkout (sem pagamento nesta fase)
+   FASE 6.5B: dropdown pesquisável InPost
    ========================================================= */
 
 .cart-layout {
@@ -375,7 +376,7 @@
   margin-top: var(--space-sm);
 }
 
-/* ---------- Ponto de recolha (Fase 6) ---------- */
+/* ---------- Ponto de recolha (Fase 6.5B: dropdown pesquisável) ---------- */
 
 [data-pickup-point-section] {
   margin-top: var(--space-sm);
@@ -401,6 +402,35 @@
   margin-bottom: 0.4rem;
 }
 
+/* Dropdown pesquisável de pontos (Fase 6.5B: sem mapa pesado, ordenado por proximidade) */
+.pickup-point-search {
+  margin-bottom: 0.6rem;
+}
+
+.pickup-search-input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.pickup-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(30, 58, 76, 0.1);
+}
+
+.pickup-point-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
 .pickup-point-option {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -409,7 +439,7 @@
   padding: 0.6rem 0.75rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0;
   cursor: pointer;
   background: var(--color-surface);
 }
@@ -449,4 +479,8 @@
   }
 
   .confirmation-box { margin: var(--space-md) var(--space-sm); padding: var(--space-md); }
+  
+  .pickup-point-list {
+    max-height: 400px;
+  }
 }
