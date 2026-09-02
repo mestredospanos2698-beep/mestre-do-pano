@@ -1,0 +1,18 @@
+{
+  "name": "mestre-do-pano-backend",
+  "version": "0.6.0",
+  "private": true,
+  "description": "Backend serverless (Cloudflare Workers) da Mestre do Pano — Fase 6: logística real (InPost + CTT), portes reais, pontos de recolha, envios/etiquetas/tracking, sobre a base D1 da Fase 5.",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "db:migrate:local": "wrangler d1 execute mestre-do-pano-db --file=./schema.sql",
+    "db:migrate:remote": "wrangler d1 execute mestre-do-pano-db --remote --file=./schema.sql",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "wrangler": "^3.78.0"
+  }
+}

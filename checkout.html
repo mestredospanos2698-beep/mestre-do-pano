@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Mestre do Pano</title>
+  <meta name="description" content="Finalize a sua encomenda Mestre do Pano.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Mestre <span>do</span> Pano</a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="shop.html">Loja</a>
+        <a href="index.html#sobre">Sobre</a>
+      </nav>
+      <div class="header-actions">
+        <a href="cart.html" class="cart-link">
+          Carrinho <span class="cart-count" data-cart-count style="display:none">0</span>
+        </a>
+        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1>Checkout</h1>
+        <p>Fase de testes — sem pagamentos reais nem envio de encomendas.</p>
+      </div>
+    </div>
+
+    <div class="container" data-checkout-root>
+
+      <!-- Carrinho vazio -->
+      <div class="checkout-empty" data-checkout-empty hidden>
+        <p>Não é possível fazer checkout com o carrinho vazio.</p>
+        <a href="shop.html" class="btn btn-primary">Voltar à loja</a>
+      </div>
+
+      <div class="checkout-layout">
+        <div class="checkout-form" data-checkout-form-wrap>
+          <div class="checkout-notice">
+            <strong>Modo de testes (PayPal Sandbox).</strong> O pagamento é processado através do
+            PayPal Sandbox — nenhum dinheiro real é movimentado. O envio real ainda não está
+            ativo; essa funcionalidade fica para uma fase posterior.
+          </div>
+          <p class="checkout-form-error" data-weight-warning hidden></p>
+
+          <form data-checkout-form novalidate>
+            <fieldset>
+              <legend>Dados do cliente</legend>
+              <div class="form-row">
+                <div>
+                  <label for="nome">Nome</label>
+                  <input type="text" id="nome" name="nome" autocomplete="given-name" inputmode="text">
+                  <p class="field-error" data-error-for="nome"></p>
+                </div>
+                <div>
+                  <label for="apelido">Apelido</label>
+                  <input type="text" id="apelido" name="apelido" autocomplete="family-name">
+                  <p class="field-error" data-error-for="apelido"></p>
+                </div>
+              </div>
+              <div class="form-row">
+                <div>
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" autocomplete="email" inputmode="email">
+                  <p class="field-error" data-error-for="email"></p>
+                </div>
+                <div>
+                  <label for="telefone">Telefone</label>
+                  <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="tel">
+                  <p class="field-error" data-error-for="telefone"></p>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Morada de entrega</legend>
+              <div class="form-row single">
+                <div>
+                  <label for="pais">País</label>
+                  <select id="pais" name="pais" data-field="country">
+                    <option value="" disabled selected>Selecione o país</option>
+                  </select>
+                  <p class="field-error" data-error-for="pais"></p>
+                </div>
+              </div>
+              <div class="form-row single">
+                <div>
+                  <label for="morada">Morada</label>
+                  <input type="text" id="morada" name="morada" autocomplete="street-address">
+                  <p class="field-error" data-error-for="morada"></p>
+                </div>
+              </div>
+              <div class="form-row">
+                <div>
+                  <label for="codigo-postal" data-postal-label>Código postal</label>
+                  <input type="text" id="codigo-postal" name="codigo-postal" autocomplete="postal-code" inputmode="text">
+                  <p class="field-error" data-error-for="codigo-postal"></p>
+                </div>
+                <div>
+                  <label for="cidade">Cidade</label>
+                  <input type="text" id="cidade" name="cidade" autocomplete="address-level2">
+                  <p class="field-error" data-error-for="cidade"></p>
+                </div>
+              </div>
+              <div class="form-row single" data-region-row hidden>
+                <div>
+                  <label for="regiao" data-region-label>Região/Distrito</label>
+                  <input type="text" id="regiao" name="regiao" autocomplete="address-level1">
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Método de entrega</legend>
+              <div data-shipping-methods>
+                <p class="empty-state">Selecione um país para ver os métodos de entrega disponíveis.</p>
+              </div>
+              <p class="field-error" data-error-for="metodo-entrega"></p>
+
+              <!-- Ponto de recolha (só aparece quando o método selecionado o exige — ex.: InPost Locker) -->
+              <div data-pickup-point-section hidden>
+                <p class="pickup-point-label">Escolher ponto de recolha</p>
+                <div data-pickup-point-list></div>
+                <p class="field-error" data-error-for="ponto-recolha"></p>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <aside class="summary-box" data-checkout-summary>
+          <h3>Resumo da encomenda</h3>
+          <div data-summary-items class="summary-items"></div>
+          <div class="summary-line">
+            <span>Peso total</span>
+            <span data-summary-weight>—</span>
+          </div>
+          <div class="summary-line">
+            <span>Subtotal</span>
+            <span data-summary-subtotal>0,00 €</span>
+          </div>
+          <div class="summary-line">
+            <span>Portes</span>
+            <span data-summary-shipping>Selecione país e método</span>
+          </div>
+          <div class="summary-line total">
+            <span>Total</span>
+            <span data-summary-total>0,00 €</span>
+          </div>
+          <button type="button" class="btn btn-primary" data-checkout-submit>Continuar para pagamento</button>
+          <p class="summary-note">PayPal Sandbox — nenhum valor real é cobrado.</p>
+          <p class="checkout-form-error" data-form-error hidden></p>
+
+          <!-- Botões PayPal (Sandbox) — só aparecem depois de a encomenda
+               ser criada no backend, que recalcula todos os valores. -->
+          <div data-paypal-section hidden>
+            <p class="summary-note">Escolha "PayPal" para concluir o pagamento de teste:</p>
+            <div data-paypal-button-container></div>
+            <p class="checkout-form-error" data-paypal-error hidden></p>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Estado do pagamento -->
+      <div class="checkout-confirmation" data-payment-pending hidden>
+        <div class="confirmation-box">
+          <p>A processar o pagamento…</p>
+        </div>
+      </div>
+      <div class="checkout-confirmation" data-payment-cancelled hidden>
+        <div class="confirmation-box">
+          <p><strong>Pagamento cancelado.</strong></p>
+          <p>A sua encomenda não foi concluída.</p>
+          <a href="checkout.html" class="btn btn-primary">Tentar novamente</a>
+        </div>
+      </div>
+      <div class="checkout-confirmation" data-payment-failed hidden>
+        <div class="confirmation-box">
+          <p><strong>Não foi possível concluir o pagamento.</strong></p>
+          <p>Pode tentar novamente.</p>
+          <a href="checkout.html" class="btn btn-primary">Tentar novamente</a>
+        </div>
+      </div>
+
+      <!-- Confirmação de encomenda paga (Sandbox) -->
+      <div class="checkout-confirmation" data-checkout-confirmation hidden></div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; <span data-current-year></span> Mestre do Pano</span>
+        <span>Portugal</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/shipping.js"></script>
+  <script src="js/payments.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

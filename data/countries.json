@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "note": "Estrutura de países suportados no checkout. 'enabled' controla se o país aparece como opção de entrega disponível — pode ser ligado/desligado aqui sem tocar no código. Todos os países da lista pedida estão presentes; apenas um subconjunto está 'enabled' nesta fase de testes, à semelhança da cobertura típica de InPost/CTT. Ajusta livremente."
+  },
+  "countries": [
+    { "code": "PT", "name": "Portugal",        "enabled": true,  "postalCodeFormat": "XXXX-XXX", "postalCodeRegex": "^\\d{4}-\\d{3}$", "hasRegion": false, "regionLabel": "Distrito" },
+    { "code": "ES", "name": "Espanha",         "enabled": true,  "postalCodeFormat": "XXXXX",    "postalCodeRegex": "^\\d{5}$",        "hasRegion": true,  "regionLabel": "Província" },
+    { "code": "FR", "name": "França",          "enabled": true,  "postalCodeFormat": "XXXXX",    "postalCodeRegex": "^\\d{5}$",        "hasRegion": false, "regionLabel": "Região" },
+    { "code": "BE", "name": "Bélgica",         "enabled": true,  "postalCodeFormat": "XXXX",     "postalCodeRegex": "^\\d{4}$",        "hasRegion": false, "regionLabel": "Região" },
+    { "code": "NL", "name": "Países Baixos",   "enabled": true,  "postalCodeFormat": "XXXX AA",  "postalCodeRegex": "^\\d{4}\\s?[A-Za-z]{2}$", "hasRegion": false, "regionLabel": "Província" },
+    { "code": "DE", "name": "Alemanha",        "enabled": true,  "postalCodeFormat": "XXXXX",    "postalCodeRegex": "^\\d{5}$",        "hasRegion": false, "regionLabel": "Estado" },
+    { "code": "IT", "name": "Itália",          "enabled": true,  "postalCodeFormat": "XXXXX",    "postalCodeRegex": "^\\d{5}$",        "hasRegion": true,  "regionLabel": "Província" },
+    { "code": "PL", "name": "Polónia",         "enabled": false, "postalCodeFormat": "XX-XXX",   "postalCodeRegex": "^\\d{2}-\\d{3}$", "hasRegion": false, "regionLabel": "Voivodia" },
+    { "code": "LU", "name": "Luxemburgo",      "enabled": false, "postalCodeFormat": "XXXX",     "postalCodeRegex": "^\\d{4}$",        "hasRegion": false, "regionLabel": "Região" },
+    { "code": "IE", "name": "Irlanda",         "enabled": false, "postalCodeFormat": "Eircode",  "postalCodeRegex": "^[A-Za-z0-9]{3}\\s?[A-Za-z0-9]{4}$", "hasRegion": false, "regionLabel": "Condado" },
+    { "code": "AT", "name": "Áustria",         "enabled": false, "postalCodeFormat": "XXXX",     "postalCodeRegex": "^\\d{4}$",        "hasRegion": false, "regionLabel": "Estado" },
+    { "code": "DK", "name": "Dinamarca",       "enabled": false, "postalCodeFormat": "XXXX",     "postalCodeRegex": "^\\d{4}$",        "hasRegion": false, "regionLabel": "Região" },
+    { "code": "SE", "name": "Suécia",          "enabled": false, "postalCodeFormat": "XXX XX",   "postalCodeRegex": "^\\d{3}\\s?\\d{2}$", "hasRegion": false, "regionLabel": "Condado" },
+    { "code": "FI", "name": "Finlândia",       "enabled": false, "postalCodeFormat": "XXXXX",    "postalCodeRegex": "^\\d{5}$",        "hasRegion": false, "regionLabel": "Região" },
+    { "code": "GR", "name": "Grécia",          "enabled": false, "postalCodeFormat": "XXX XX",   "postalCodeRegex": "^\\d{3}\\s?\\d{2}$", "hasRegion": false, "regionLabel": "Região" },
+    { "code": "CZ", "name": "Chéquia",         "enabled": false, "postalCodeFormat": "XXX XX",   "postalCodeRegex": "^\\d{3}\\s?\\d{2}$", "hasRegion": false, "regionLabel": "Região" },
+    { "code": "HU", "name": "Hungria",         "enabled": false, "postalCodeFormat": "XXXX",     "postalCodeRegex": "^\\d{4}$",        "hasRegion": false, "regionLabel": "Condado" },
+    { "code": "RO", "name": "Roménia",         "enabled": false, "postalCodeFormat": "XXXXXX",   "postalCodeRegex": "^\\d{6}$",        "hasRegion": true,  "regionLabel": "Condado" },
+    { "code": "BG", "name": "Bulgária",        "enabled": false, "postalCodeFormat": "XXXX",     "postalCodeRegex": "^\\d{4}$",        "hasRegion": false, "regionLabel": "Província" },
+    { "code": "HR", "name": "Croácia",         "enabled": false, "postalCodeFormat": "XXXXX",    "postalCodeRegex": "^\\d{5}$",        "hasRegion": false, "regionLabel": "Região" },
+    { "code": "SI", "name": "Eslovénia",       "enabled": false, "postalCodeFormat": "XXXX",     "postalCodeRegex": "^\\d{4}$",        "hasRegion": false, "regionLabel": "Região" },
+    { "code": "SK", "name": "Eslováquia",      "enabled": false, "postalCodeFormat": "XXX XX",   "postalCodeRegex": "^\\d{3}\\s?\\d{2}$", "hasRegion": false, "regionLabel": "Região" },
+    { "code": "EE", "name": "Estónia",         "enabled": false, "postalCodeFormat": "XXXXX",    "postalCodeRegex": "^\\d{5}$",        "hasRegion": false, "regionLabel": "Condado" },
+    { "code": "LV", "name": "Letónia",         "enabled": false, "postalCodeFormat": "LV-XXXX",  "postalCodeRegex": "^(LV-)?\\d{4}$",  "hasRegion": false, "regionLabel": "Região" },
+    { "code": "LT", "name": "Lituânia",        "enabled": false, "postalCodeFormat": "LT-XXXXX", "postalCodeRegex": "^(LT-)?\\d{5}$",  "hasRegion": false, "regionLabel": "Condado" },
+    { "code": "MT", "name": "Malta",           "enabled": false, "postalCodeFormat": "AAA XXXX", "postalCodeRegex": "^[A-Za-z]{3}\\s?\\d{4}$", "hasRegion": false, "regionLabel": "Região" },
+    { "code": "CY", "name": "Chipre",          "enabled": false, "postalCodeFormat": "XXXX",     "postalCodeRegex": "^\\d{4}$",        "hasRegion": false, "regionLabel": "Distrito" },
+    { "code": "GB", "name": "Reino Unido",     "enabled": false, "postalCodeFormat": "AA9 9AA",  "postalCodeRegex": "^[A-Za-z0-9]{2,4}\\s?[A-Za-z0-9]{3}$", "hasRegion": false, "regionLabel": "Condado" }
+  ]
+}

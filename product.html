@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produto — Mestre do Pano</title>
+  <meta name="description" content="Detalhe do produto Mestre do Pano.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Mestre <span>do</span> Pano</a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="shop.html" aria-current="page">Loja</a>
+        <a href="index.html#sobre">Sobre</a>
+      </nav>
+      <div class="header-actions">
+        <a href="cart.html" class="cart-link">
+          Carrinho <span class="cart-count" data-cart-count style="display:none">0</span>
+        </a>
+        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container product-detail" data-product-root>
+      <p class="empty-state">A carregar produto…</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="logo">Mestre <span>do</span> Pano</p>
+          <p>Panos de cozinha 100% algodão, feitos em Portugal.</p>
+        </div>
+        <div>
+          <h4>Loja</h4>
+          <ul>
+            <li><a href="shop.html">Todos os produtos</a></li>
+            <li><a href="cart.html">Carrinho</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Informação</h4>
+          <ul>
+            <li><a href="index.html#sobre">Sobre a marca</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span data-current-year></span> Mestre do Pano</span>
+        <span>Portugal</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

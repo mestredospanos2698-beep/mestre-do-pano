@@ -1,0 +1,44 @@
+name = "mestre-do-pano-api"
+main = "src/index.js"
+compatibility_date = "2026-06-01"
+
+# --- D1: base de dados de encomendas, stock, idempotência e webhooks -------
+# (Fase 5 — substitui o KV usado como protótipo na Fase 4.)
+# Criar com: wrangler d1 create mestre-do-pano-db
+# e colar o "database_id" devolvido aqui. Depois aplicar o schema com:
+#   wrangler d1 execute mestre-do-pano-db --remote --file=./schema.sql
+[[d1_databases]]
+binding = "DB"
+database_name = "mestre-do-pano-db"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+# --- Cron Trigger: mantém a tabela `stock` sincronizada com o catálogo -----
+# publicado, mesmo sem nenhuma encomenda acontecer entretanto.
+[triggers]
+crons = ["*/10 * * * *"]
+
+# --- Variáveis NÃO secretas (podem ir no repositório) -----------------------
+[vars]
+PAYPAL_ENVIRONMENT = "sandbox"
+ALLOWED_ORIGIN = "https://SEU-UTILIZADOR.github.io"
+PRODUCTS_URL = "https://SEU-UTILIZADOR.github.io/mestre-do-pano/data/products.json"
+SHIPPING_URL = "https://SEU-UTILIZADOR.github.io/mestre-do-pano/data/shipping.json"
+COUNTRIES_URL = "https://SEU-UTILIZADOR.github.io/mestre-do-pano/data/countries.json"
+CURRENCY = "EUR"
+
+# --- Logística real (Fase 6) -----------------------------------------------
+# SHIPPING_ENVIRONMENT controla explicitamente qual ambiente das
+# transportadoras é usado — NUNCA assume produção por omissão.
+# Ver docs/shipping.md para o estado real de cada transportadora (InPost
+# tem cliente HTTP real mas sem conta comercial confirmada para Portugal
+# nesta fase; CTT é um stub que recusa operações reais).
+SHIPPING_ENVIRONMENT = "sandbox"
+
+# --- Secrets (NUNCA colocar aqui — usar `wrangler secret put NOME`) --------
+# PAYPAL_CLIENT_ID
+# PAYPAL_CLIENT_SECRET
+# PAYPAL_WEBHOOK_ID
+# INPOST_API_TOKEN          (token de organização InPost — só existe com conta comercial)
+# INPOST_ORGANIZATION_ID    (id da organização InPost — idem)
+# Os CTT não têm variáveis de credenciais nesta fase — o provider é um stub
+# que recusa qualquer operação real (ver backend/src/shipping/providers/ctt.js).

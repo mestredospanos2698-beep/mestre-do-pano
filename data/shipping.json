@@ -1,0 +1,43 @@
+{
+  "_meta": {
+    "demo": true,
+    "note": "VALORES DE DEMONSTRAÇÃO — NÃO SÃO PREÇOS COMERCIAIS REAIS. Servem apenas para testar o fluxo de checkout da Fase 3. Serão substituídos pelos preços reais de contrato com InPost/CTT (ou pela chamada direta à respetiva API) numa fase posterior, sem alterar a estrutura do checkout.",
+    "currency": "EUR",
+    "amounts_in": "cents",
+    "weight_unit": "kg"
+  },
+  "methods": [
+    { "id": "ctt",    "name": "CTT — entrega ao domicílio (método de teste)",       "enabled": true, "provider": "ctt",    "requiresPickupPoint": false },
+    { "id": "inpost", "name": "InPost — Locker / Ponto Pack (método de teste)",     "enabled": true, "provider": "inpost", "requiresPickupPoint": true, "providerServiceId": "inpost_locker" }
+  ],
+  "rates": {
+    "PT": {
+      "ctt":    [ { "maxWeight": 0.5, "price": 476 }, { "maxWeight": 1, "price": 542 }, { "maxWeight": 2, "price": 589 }, { "maxWeight": 5, "price": 790 }, { "maxWeight": 10, "price": 1090 } ],
+      "inpost": [ { "maxWeight": 0.5, "price": 349 }, { "maxWeight": 1, "price": 399 }, { "maxWeight": 2, "price": 449 }, { "maxWeight": 5, "price": 599 }, { "maxWeight": 10, "price": 899 } ]
+    },
+    "ES": {
+      "ctt":    [ { "maxWeight": 0.5, "price": 590 }, { "maxWeight": 1, "price": 690 }, { "maxWeight": 2, "price": 790 }, { "maxWeight": 5, "price": 990 }, { "maxWeight": 10, "price": 1390 } ],
+      "inpost": [ { "maxWeight": 0.5, "price": 499 }, { "maxWeight": 1, "price": 549 }, { "maxWeight": 2, "price": 599 }, { "maxWeight": 5, "price": 799 }, { "maxWeight": 10, "price": 1199 } ]
+    },
+    "FR": {
+      "ctt":    [ { "maxWeight": 0.5, "price": 690 }, { "maxWeight": 1, "price": 790 }, { "maxWeight": 2, "price": 890 }, { "maxWeight": 5, "price": 1190 }, { "maxWeight": 10, "price": 1590 } ],
+      "inpost": [ { "maxWeight": 0.5, "price": 599 }, { "maxWeight": 1, "price": 649 }, { "maxWeight": 2, "price": 699 }, { "maxWeight": 5, "price": 899 }, { "maxWeight": 10, "price": 1299 } ]
+    },
+    "BE": {
+      "ctt":    [ { "maxWeight": 0.5, "price": 690 }, { "maxWeight": 1, "price": 790 }, { "maxWeight": 2, "price": 890 }, { "maxWeight": 5, "price": 1190 }, { "maxWeight": 10, "price": 1590 } ],
+      "inpost": [ { "maxWeight": 0.5, "price": 549 }, { "maxWeight": 1, "price": 599 }, { "maxWeight": 2, "price": 649 }, { "maxWeight": 5, "price": 849 }, { "maxWeight": 10, "price": 1249 } ]
+    },
+    "NL": {
+      "ctt":    [ { "maxWeight": 0.5, "price": 690 }, { "maxWeight": 1, "price": 790 }, { "maxWeight": 2, "price": 890 }, { "maxWeight": 5, "price": 1190 }, { "maxWeight": 10, "price": 1590 } ],
+      "inpost": [ { "maxWeight": 0.5, "price": 549 }, { "maxWeight": 1, "price": 599 }, { "maxWeight": 2, "price": 649 }, { "maxWeight": 5, "price": 849 }, { "maxWeight": 10, "price": 1249 } ]
+    },
+    "DE": {
+      "ctt":    [ { "maxWeight": 0.5, "price": 690 }, { "maxWeight": 1, "price": 790 }, { "maxWeight": 2, "price": 890 }, { "maxWeight": 5, "price": 1190 }, { "maxWeight": 10, "price": 1590 } ],
+      "inpost": [ { "maxWeight": 0.5, "price": 549 }, { "maxWeight": 1, "price": 599 }, { "maxWeight": 2, "price": 649 }, { "maxWeight": 5, "price": 849 }, { "maxWeight": 10, "price": 1249 } ]
+    },
+    "IT": {
+      "ctt":    [ { "maxWeight": 0.5, "price": 790 }, { "maxWeight": 1, "price": 890 }, { "maxWeight": 2, "price": 990 }, { "maxWeight": 5, "price": 1290 }, { "maxWeight": 10, "price": 1690 } ],
+      "inpost": [ { "maxWeight": 0.5, "price": 599 }, { "maxWeight": 1, "price": 649 }, { "maxWeight": 2, "price": 699 }, { "maxWeight": 5, "price": 899 }, { "maxWeight": 10, "price": 1299 } ]
+    }
+  }
+}

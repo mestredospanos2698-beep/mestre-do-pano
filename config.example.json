@@ -1,0 +1,7 @@
+{
+  "stock_excel_path": "C:\\Users\\<utilizador>\\OneDrive\\<pasta>\\Stock.xlsx",
+  "photos_base_dir": "C:\\Users\\<utilizador>\\OneDrive\\<pasta>",
+  "sheet_name": "Rascunhos",
+  "output_json": "data/products.json",
+  "output_images_dir": "images/produtos"
+}
