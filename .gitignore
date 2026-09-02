@@ -13,6 +13,10 @@ backend/.env
 .env.*
 !.env.example
 
+# Python (tools/sync_stock.py) — nunca versionar bytecode compilado
+__pycache__/
+*.pyc
+
 # Dependências / build
 node_modules/
 backend/node_modules/
