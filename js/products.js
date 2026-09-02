@@ -40,7 +40,7 @@ const MestreDoPanoProducts = (() => {
       <a class="product-card" href="product.html?id=${encodeURIComponent(product.id)}">
         <div class="thumb">
           <div class="placeholder-pattern" aria-hidden="true"></div>
-          ${firstImage ? `<img src="${firstImage}" alt="${product.name}" loading="lazy" onerror="this.style.display='none'">` : ''}
+          ${firstImage ? `<img src="${firstImage}" alt="${product.name}" loading="lazy" onerror="console.error('Image failed:', this.src); this.style.display='none'">` : ''}
         </div>
         <h3>${product.name}</h3>
         <p class="price">${priceLabel}</p>
@@ -134,7 +134,7 @@ const MestreDoPanoProducts = (() => {
     let qty = 1;
 
     const galeria = (product.images && product.images.length)
-      ? product.images.map((img, i) => `<img src="${img}" alt="${product.name}" ${i > 0 ? 'style="display:none"' : ''} onerror="this.style.display='none'">`).join('')
+      ? product.images.map((img, i) => `<img src="${img}" alt="${product.name}" ${i > 0 ? 'style="display:none"' : ''} onerror="console.error('Gallery image failed:', this.src); this.style.display='none'">`).join('')
       : '<div class="placeholder-pattern" aria-hidden="true"></div>';
 
     root.innerHTML = `
