@@ -200,6 +200,8 @@ const MestreDoPanoProducts = (() => {
   return { loadAll, getById, renderGrid, initShopPage, initProductPage };
 })();
 
+window.MestreDoPanoProducts = MestreDoPanoProducts;
+
 document.addEventListener('DOMContentLoaded', () => {
   MestreDoPanoProducts.renderGrid('[data-featured-grid]', { limit: 4 });
   MestreDoPanoProducts.initShopPage();
