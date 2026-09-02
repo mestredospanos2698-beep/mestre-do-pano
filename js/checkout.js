@@ -66,6 +66,9 @@ const MestreDoPanoCheckout = (() => {
     els.shippingMethods = document.querySelector('[data-shipping-methods]');
     els.pickupPointSection = document.querySelector('[data-pickup-point-section]');
     els.pickupPointList = document.querySelector('[data-pickup-point-list]');
+    els.pickupPointIdInput = document.querySelector('[data-pickup-point-id-input]');
+    els.inpostGeowidgetContainer = document.querySelector('[data-inpost-geowidget-container]');
+    els.inpostGeowidget = document.querySelector('[data-inpost-geowidget]');
     els.weightWarning = document.querySelector('[data-weight-warning]');
     els.paypalSection = document.querySelector('[data-paypal-section]');
     els.paypalError = document.querySelector('[data-paypal-error]');
@@ -223,10 +226,100 @@ const MestreDoPanoCheckout = (() => {
     selectedPickupPoint = null;
     if (els.pickupPointSection) els.pickupPointSection.hidden = true;
     if (els.pickupPointList) els.pickupPointList.innerHTML = '';
+    if (els.pickupPointIdInput) els.pickupPointIdInput.value = '';
+    hideInpostGeowidget();
+  }
+
+  // ---- InPost Geowidget (Ponto Pack / Locker) — Fase 6.5 -----------------
+  //
+  // Scaffold do mapa interativo da InPost para escolha de Ponto Pack/Locker.
+  // Sem conta comercial/token InPost confirmados para Portugal nesta fase
+  // (ver docs/shipping.md, secção 3) — este bloco prepara o container, o
+  // carregamento do script e a captura estruturada do ponto escolhido, mas
+  // NUNCA inventa pontos de recolha: se o widget não carregar/não houver
+  // configuração, cai sempre para a lista textual (renderPickupPoints),
+  // que já só mostra pontos reais devolvidos pelo backend.
+
+  const INPOST_GEOWIDGET_SCRIPT_URL = 'https://geowidget.easypack24.net/js/sdk-for-javascript.js';
+  let inpostGeowidgetLoadPromise = null;
+
+  function loadInpostGeowidgetScript() {
+    if (inpostGeowidgetLoadPromise) return inpostGeowidgetLoadPromise;
+    inpostGeowidgetLoadPromise = new Promise((resolve, reject) => {
+      if (window.customElements && window.customElements.get('inpost-geowidget')) {
+        resolve();
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = INPOST_GEOWIDGET_SCRIPT_URL;
+      script.async = true;
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error('Não foi possível carregar o mapa InPost.'));
+      document.head.appendChild(script);
+    });
+    return inpostGeowidgetLoadPromise;
+  }
+
+  /** Estrutura o evento do Geowidget num objeto ponto-de-recolha uniforme
+   * (mesma forma usada por renderPickupPoints, vinda do backend). */
+  function buildPickupPointFromGeowidgetDetail(detail) {
+    if (!detail) return null;
+    const address = detail.address_details || detail.address || {};
+    return {
+      id: detail.name || detail.id, // InPost usa o "name" (ex.: "PT12345") como identificador do ponto
+      name: detail.name || detail.id,
+      address: {
+        line1: [address.street, address.building_number].filter(Boolean).join(' ') || address.line1 || '',
+        city: address.city || '',
+        postCode: address.post_code || address.postCode || '',
+      },
+    };
+  }
+
+  async function initInpostGeowidget() {
+    if (!els.inpostGeowidgetContainer || !els.inpostGeowidget) return false;
+
+    try {
+      await loadInpostGeowidgetScript();
+    } catch (err) {
+      console.warn('Geowidget InPost indisponível, a usar lista de pontos como alternativa.', err);
+      els.inpostGeowidgetContainer.hidden = true;
+      return false;
+    }
+
+    els.inpostGeowidgetContainer.hidden = false;
+    els.inpostGeowidget.innerHTML = '<inpost-geowidget language="pt" config="parcelcollect" token="" onpoint="onpoint"></inpost-geowidget>';
+
+    // O componente da InPost despoleta o evento global "onpoint" (ver
+    // documentação pública do Geowidget) com o ponto escolhido no mapa.
+    window.onpoint = function onInpostPointSelected(detail) {
+      const point = buildPickupPointFromGeowidgetDetail(detail);
+      if (!point) return;
+      selectedPickupPoint = point;
+      if (els.pickupPointIdInput) els.pickupPointIdInput.value = point.id;
+      clearFieldError('ponto-recolha');
+    };
+
+    return true;
+  }
+
+  function hideInpostGeowidget() {
+    if (els.inpostGeowidgetContainer) els.inpostGeowidgetContainer.hidden = true;
+    if (els.inpostGeowidget) els.inpostGeowidget.innerHTML = '';
+    window.onpoint = undefined;
   }
 
   async function renderPickupPoints() {
     if (!els.pickupPointList || !selectedMethodConfig || !selectedMethodConfig.provider) return;
+
+    // Para a InPost (Locker/Ponto Pack), tentamos primeiro o mapa
+    // interativo (Geowidget); a lista textual abaixo funciona sempre como
+    // fallback e é a única fonte usada para validar a seleção no submit.
+    if (selectedMethodConfig.provider === 'inpost') {
+      await initInpostGeowidget();
+    } else {
+      hideInpostGeowidget();
+    }
 
     els.pickupPointList.innerHTML = '<p class="empty-state">A carregar pontos de recolha…</p>';
 
@@ -253,6 +346,7 @@ const MestreDoPanoCheckout = (() => {
         input.addEventListener('change', (event) => {
           const point = result.points.find((p) => String(p.id) === event.target.value);
           selectedPickupPoint = point || null;
+          if (els.pickupPointIdInput) els.pickupPointIdInput.value = point ? point.id : '';
           clearFieldError('ponto-recolha');
         });
       });
@@ -498,6 +592,16 @@ const MestreDoPanoCheckout = (() => {
           postalCode: values.codigoPostal,
           city: values.cidade,
           region: values.regiao || null,
+          // Ponto de recolha (InPost Locker/Ponto Pack) — estruturado com
+          // id, nome e morada do locker, capturado quer via Geowidget quer
+          // via lista textual (renderPickupPoints). Nunca afeta o preço
+          // (o backend recalcula os portes de forma independente) — é só
+          // informação de entrega.
+          pickupPoint: selectedPickupPoint ? {
+            id: selectedPickupPoint.id,
+            name: selectedPickupPoint.name,
+            address: selectedPickupPoint.address || null,
+          } : null,
         },
         deliveryMethod: selectedMethodId,
         items: cartItems.map((item) => ({ productId: item.productId, qty: item.qty })),

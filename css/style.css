@@ -296,6 +296,19 @@ p { margin: 0 0 var(--space-sm); max-width: 62ch; }
     repeating-linear-gradient(45deg, #EFE7D4 0 8px, #E6DAC0 8px 16px);
 }
 
+.product-card .thumb .variation-badge {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  background: rgba(30, 58, 76, 0.88);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius);
+  letter-spacing: 0.01em;
+}
+
 .product-card h3 {
   font-family: var(--font-body);
   font-weight: 600;

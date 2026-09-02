@@ -68,6 +68,53 @@
 }
 .cart-row .remove-btn:hover { color: var(--color-accent); }
 
+/* ---------- Seletor de quantidade customizado (Fase 6.5) ---------- */
+/* Mesmo componente visual usado em product.html (css/shop.css) —
+   redefinido aqui porque cart.html carrega checkout.css, não shop.css. */
+
+.qty-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.qty-stepper button {
+  background: var(--color-surface);
+  border: none;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1.1rem;
+  font-family: var(--font-body);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.qty-stepper button:hover:not(:disabled) {
+  background: var(--color-bg);
+}
+
+.qty-stepper button:disabled {
+  color: var(--color-border);
+  cursor: not-allowed;
+}
+
+.qty-stepper input {
+  width: 2.6rem;
+  text-align: center;
+  border: none;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--color-ink);
+  background: var(--color-surface);
+}
+
 .cart-empty {
   padding: var(--space-lg) 0;
   color: var(--color-ink-soft);
@@ -332,6 +379,20 @@
 
 [data-pickup-point-section] {
   margin-top: var(--space-sm);
+}
+
+[data-inpost-geowidget-container] {
+  margin: 0.6rem 0 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 320px;
+  background: var(--color-surface);
+}
+
+[data-inpost-geowidget] {
+  width: 100%;
+  min-height: 320px;
 }
 
 .pickup-point-label {

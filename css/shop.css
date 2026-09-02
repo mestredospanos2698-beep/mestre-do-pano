@@ -143,27 +143,45 @@
 
 .qty-stepper {
   display: inline-flex;
+  align-items: stretch;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-surface);
 }
 
 .qty-stepper button {
-  background: none;
+  background: var(--color-surface);
   border: none;
-  width: 2.2rem;
-  height: 2.2rem;
-  font-size: 1.1rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 1.15rem;
+  font-family: var(--font-body);
+  color: var(--color-primary);
   cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.qty-stepper button:hover:not(:disabled) {
+  background: var(--color-bg);
+}
+
+.qty-stepper button:disabled {
+  color: var(--color-border);
+  cursor: not-allowed;
 }
 
 .qty-stepper input {
-  width: 2.6rem;
+  width: 2.8rem;
   text-align: center;
   border: none;
   border-left: 1px solid var(--color-border);
   border-right: 1px solid var(--color-border);
   font-family: var(--font-body);
+  font-weight: 600;
   font-size: 0.95rem;
+  color: var(--color-ink);
+  background: var(--color-surface);
 }
 
 .product-meta {
@@ -183,6 +201,195 @@
 
 .product-meta dt { font-weight: 600; color: var(--color-ink); }
 .product-meta dd { margin: 0; }
+
+/* ---------- Descrição do produto (Fase 6.5 — abaixo do botão) ---------- */
+
+.product-description {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-ink-soft);
+  white-space: pre-line;
+}
+
+/* ---------- Accordion de avisos (Fase 6.5) ---------- */
+
+.product-accordion {
+  margin-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-sm);
+}
+
+.product-accordion summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  list-style: none;
+}
+
+.product-accordion summary::-webkit-details-marker { display: none; }
+
+.product-accordion summary::before {
+  content: '+ ';
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.product-accordion[open] summary::before {
+  content: '– ';
+}
+
+.product-accordion .additional-info {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--color-ink-soft);
+  white-space: pre-line;
+}
+
+/* ---------- Galeria estilo Temu: miniaturas (Fase 6.5) ---------- */
+
+.product-gallery .main-image img {
+  transition: opacity 0.15s ease;
+}
+
+.gallery-thumbs {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+}
+
+.gallery-thumb {
+  flex: 0 0 auto;
+  width: 3.6rem;
+  height: 3.6rem;
+  padding: 0;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.gallery-thumb:hover,
+.gallery-thumb.is-active {
+  border-color: var(--color-primary);
+}
+
+/* ---------- Seletor de variações (Fase 6.5) ---------- */
+
+.variation-selector {
+  margin: var(--space-md) 0;
+}
+
+.variation-selector-label {
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  margin-bottom: 0.5rem;
+}
+
+.variation-selector-label strong {
+  color: var(--color-ink);
+}
+
+.variation-options {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* Swatches de cor (círculos) */
+
+.variation-swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  width: 3.6rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  padding: 0;
+}
+
+.variation-swatch-circle {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: var(--swatch-color);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.variation-swatch:hover:not(:disabled) .variation-swatch-circle {
+  transform: scale(1.06);
+}
+
+.variation-swatch.is-selected .variation-swatch-circle {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 3px var(--color-primary);
+}
+
+.variation-swatch-label {
+  font-size: 0.72rem;
+  color: var(--color-ink-soft);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.variation-swatch.is-out-of-stock {
+  cursor: not-allowed;
+}
+
+.variation-swatch.is-out-of-stock .variation-swatch-circle {
+  opacity: 0.4;
+  border-style: dashed;
+  background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.12) 0 3px, transparent 3px 6px);
+}
+
+/* Pills de quantidade */
+
+.variation-pill {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--color-ink);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.variation-pill:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.variation-pill.is-selected {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+  background: var(--color-bg);
+}
+
+.variation-pill.is-out-of-stock {
+  border-style: dashed;
+  color: var(--color-ink-soft);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.variation-pill-esgotado {
+  font-size: 0.72rem;
+  color: var(--color-accent);
+}
 
 @media (max-width: 860px) {
   .shop-layout { grid-template-columns: 1fr; }
