@@ -39,8 +39,9 @@ const MestreDoPanoProducts = (() => {
     return `
       <a class="product-card" href="product.html?id=${encodeURIComponent(product.id)}">
         <div class="thumb">
-          <div class="placeholder-pattern" aria-hidden="true"></div>
-          ${firstImage ? `<img src="${firstImage}" alt="${product.name}" loading="lazy" onerror="console.error('Image failed:', this.src); this.style.display='none'">` : ''}
+          ${firstImage
+            ? `<img src="${firstImage}" alt="${product.name}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'), { className: 'placeholder-pattern', ariaHidden: 'true' }))">`
+            : '<div class="placeholder-pattern" aria-hidden="true"></div>'}
         </div>
         <h3>${product.name}</h3>
         <p class="price">${priceLabel}</p>
