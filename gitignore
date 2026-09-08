@@ -1,0 +1,38 @@
+# Mestre do Pano — .gitignore
+
+# Configuração local (caminhos do computador do dono da loja)
+config.json
+
+# Excel de stock — nunca versionado (dados privados/pessoais/comerciais)
+Stock.xlsx
+
+# Segredos locais do backend (Cloudflare Workers / wrangler dev)
+backend/.dev.vars
+backend/.env
+.env
+.env.*
+!.env.example
+
+# Python (tools/sync_stock.py) — nunca versionar bytecode compilado
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Dependências / build
+node_modules/
+backend/node_modules/
+backend/.wrangler/
+
+# Backups e ficheiros temporários (Fase 6.5A — clean-up da pasta)
+# Nunca versionar zips de backup do projeto nem ficheiros temporários
+# deixados por editores/SO. As imagens finais em images/produtos/ SÃO
+# versionadas propositadamente (já otimizadas em .webp pelo
+# sync_stock.py) — só os originais pesados e os temporários ficam fora.
+*.zip
+*.tmp
+*.bak
+~$*
+
+# Sistema
+.DS_Store
+Thumbs.db

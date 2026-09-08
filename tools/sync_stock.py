@@ -29,6 +29,26 @@ A coluna "estado" (E) é lida do Excel apenas para detetar a sua presença
 sem quebrar o mapeamento de colunas, mas é EXCLUÍDA deliberadamente do
 products.json — não faz parte do schema desta fase.
 
+Novidades da Fase 6.5A — LIMPEZA E COMPRESSÃO DE IMAGENS:
+    - images/produtos/ é apagada e reconstruída do zero em cada
+      sincronização (nunca acumula ficheiros de produtos antigos).
+    - Cada fotografia é aberta com Pillow, redimensionada para no máximo
+      1200px de largura e gravada como .webp (qualidade 80) — nunca se
+      copia o ficheiro original 1:1 para o repositório.
+    - Os ficheiros passam a ter nomes previsíveis ("01.webp", "02.webp",
+      ...) em vez do nome original do OneDrive. Isto corrige, de raiz,
+      o bug que fazia produtos como "Tea Time", "Chavenas" e "Frutos
+      Riscados" perderem a imagem no site: os nomes originais (capturas
+      de ecrã) continham espaços/acentos e nalguns casos "#", e um "#"
+      num caminho de imagem é interpretado pelo browser como início de
+      um fragmento de URL — tudo o que vem a seguir é ignorado e a
+      imagem dá 404. Nomes só com dígitos nunca têm este problema.
+    - A localização da pasta de fotos no Excel passa a tolerar pequenas
+      diferenças de acentuação/maiúsculas/espaços em relação ao nome
+      real da pasta no OneDrive (ver resolver_pasta_origem).
+    - Cada variação passa a ter "descricao" própria (coluna B), além da
+      descrição do produto-pai (mantida para não obrigar a mexer na UI).
+
 Uso:
     python sync_stock.py
 
@@ -53,9 +73,19 @@ if sys.stderr.encoding and sys.stderr.encoding.lower() != "utf-8":
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 import openpyxl
+from PIL import Image, ImageOps
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 CONFIG_PATH = BASE_DIR / "config.json"
+
+# --- Compressão de imagens (Fase 6.5A) ------------------------------------
+# Cada fotografia final do site é sempre gravada em .webp, nunca acima
+# desta largura, com esta qualidade. Isto substitui a antiga cópia 1:1
+# do ficheiro original (que replicava JPG/PNG de várias MB por produto) —
+# a pasta images/produtos deixa de guardar originais pesados, só o
+# resultado já otimizado para a Web.
+LARGURA_MAXIMA_IMAGEM = 1200
+QUALIDADE_WEBP = 80
 
 # Colunas obrigatórias para um produto ser considerado válido.
 CAMPOS_OBRIGATORIOS = ["titulo", "preco", "stock"]
@@ -200,6 +230,82 @@ def normalizar_pasta_fotos(pasta_relativa: str) -> str:
     """Converte separadores Windows ('\\') para barras Web ('/') — nunca
     grava um caminho com '\\' no products.json, mesmo que o Excel os use."""
     return pasta_relativa.replace("\\", "/").strip()
+
+
+def _chave_pasta(nome: str) -> str:
+    """Chave tolerante a acentos/maiúsculas/espaços extra, usada só para
+    encontrar a pasta certa em disco quando o texto do Excel não bate
+    caractere-a-caractere com o nome real da pasta (causa raiz de
+    produtos como "Tea Time", "Chavenas" e "Frutos Riscados" perderem a
+    imagem: o Excel tinha o nome ligeiramente diferente do OneDrive)."""
+    nome = unicodedata.normalize("NFKD", nome)
+    nome = nome.encode("ascii", "ignore").decode("ascii")
+    return re.sub(r"\s+", " ", nome).strip().lower()
+
+
+def resolver_pasta_origem(photos_base_dir: Path, pasta_relativa: str):
+    """
+    Resolve o caminho real da pasta de fotos em disco, segmento a
+    segmento, tolerando diferenças de acentos/maiúsculas/espaços entre o
+    texto escrito no Excel e o nome real da pasta no OneDrive.
+
+    1ª tentativa: caminho exato (comportamento antigo, mais rápido).
+    2ª tentativa: por cada segmento do caminho, procura entre as
+    subpastas existentes uma cujo nome "normalizado" (sem acentos, sem
+    maiúsculas, espaços colapsados) seja igual — sem isto, uma pasta
+    escrita "Chavenas " (espaço a mais) ou "Tea-Time" no Excel nunca
+    batia com a pasta real "Tea Time" e o produto ficava sem foto.
+
+    Devolve o Path resolvido, ou None se não encontrar mesmo com a
+    tolerância aplicada.
+    """
+    caminho_exato = photos_base_dir / pasta_relativa.replace("/", os.sep)
+    if caminho_exato.is_dir():
+        return caminho_exato
+
+    atual = photos_base_dir
+    for segmento in pasta_relativa.split("/"):
+        segmento = segmento.strip()
+        if not segmento:
+            continue
+        if not atual.is_dir():
+            return None
+        alvo = _chave_pasta(segmento)
+        correspondencia = next(
+            (p for p in atual.iterdir() if p.is_dir() and _chave_pasta(p.name) == alvo),
+            None,
+        )
+        if correspondencia is None:
+            return None
+        atual = correspondencia
+
+    return atual if atual.is_dir() and atual != photos_base_dir else None
+
+
+def otimizar_e_guardar_imagem(origem: Path, destino_webp: Path):
+    """
+    Abre uma fotografia (JPG/PNG/WEBP), corrige a orientação EXIF,
+    redimensiona para no máximo LARGURA_MAXIMA_IMAGEM de largura (nunca
+    aumenta imagens pequenas) e grava como .webp com QUALIDADE_WEBP.
+
+    Esta função é o único sítio do script que escreve ficheiros de
+    imagem em images/produtos — a cópia 1:1 do original deixou de
+    existir a partir da Fase 6.5A.
+    """
+    with Image.open(origem) as img:
+        img = ImageOps.exif_transpose(img)
+
+        if img.mode == "P":
+            img = img.convert("RGBA")
+        elif img.mode not in ("RGB", "RGBA"):
+            img = img.convert("RGB")
+
+        if img.width > LARGURA_MAXIMA_IMAGEM:
+            nova_altura = round(img.height * (LARGURA_MAXIMA_IMAGEM / img.width))
+            img = img.resize((LARGURA_MAXIMA_IMAGEM, nova_altura), Image.LANCZOS)
+
+        destino_webp.parent.mkdir(parents=True, exist_ok=True)
+        img.save(destino_webp, "WEBP", quality=QUALIDADE_WEBP, method=6)
 
 
 def _normalizar_texto_para_chave(texto: str) -> str:
@@ -530,6 +636,9 @@ def agrupar_produtos(linhas_lidas, avisos):
             variacao_obj = {
                 "sku": sku,
                 "variacao": linha_variacao["_variacao_valor"],
+                # descrição própria de CADA variação (coluna B do Excel),
+                # e não só a do produto-pai — pedido explícito da Fase 6.5A.
+                "descricao": linha_variacao["description"],
                 "preco": linha_variacao["price"],
                 "stock": linha_variacao["stock"],
                 "peso_kg": (
@@ -556,9 +665,9 @@ def resolver_fotografias_produto_simples(produto, photos_base_dir: Path, output_
         avisos.append(f"{produto['id']} → sem pasta de fotografias indicada no Excel.")
         return False
 
-    pasta_origem = photos_base_dir / pasta_relativa.replace("/", os.sep)
+    pasta_origem = resolver_pasta_origem(photos_base_dir, pasta_relativa)
 
-    if not pasta_origem.is_dir():
+    if pasta_origem is None:
         avisos.append(f"{produto['id']} → fotografia não encontrada (pasta '{pasta_relativa}' não existe).")
         return False
 
@@ -571,14 +680,27 @@ def resolver_fotografias_produto_simples(produto, photos_base_dir: Path, output_
         return False
 
     pasta_destino = output_images_dir / produto["id"]
-    pasta_destino.mkdir(parents=True, exist_ok=True)
 
     imagens_finais = []
-    for ficheiro in ficheiros:
-        destino = pasta_destino / ficheiro.name
-        shutil.copy2(ficheiro, destino)
+    for indice, ficheiro in enumerate(ficheiros, start=1):
+        # nome de ficheiro sempre previsível/seguro (só dígitos): o nome
+        # original vindo do OneDrive por vezes tinha espaços, acentos ou
+        # até "#" (ex.: capturas de ecrã) — um "#" no caminho da imagem
+        # parte o URL no browser (tudo depois de "#" é ignorado), o que
+        # fazia o produto aparecer sem imagem no site.
+        nome_seguro = f"{indice:02d}.webp"
+        destino = pasta_destino / nome_seguro
+        try:
+            otimizar_e_guardar_imagem(ficheiro, destino)
+        except Exception as exc:
+            avisos.append(f"{produto['id']} → falha ao otimizar '{ficheiro.name}': {exc}")
+            continue
         # caminho Web, sempre com barras normais — nunca "\"
-        imagens_finais.append(f"images/produtos/{produto['id']}/{ficheiro.name}")
+        imagens_finais.append(f"images/produtos/{produto['id']}/{nome_seguro}")
+
+    if not imagens_finais:
+        avisos.append(f"{produto['id']} → nenhuma fotografia pôde ser otimizada (pasta '{pasta_relativa}').")
+        return False
 
     produto["images"] = imagens_finais
     return True
@@ -590,9 +712,9 @@ def resolver_fotografias_variacao(produto_pai, variacao, photos_base_dir: Path, 
         avisos.append(f"{produto_pai['id']} / {variacao['sku']} → sem pasta de fotografias indicada no Excel.")
         return False
 
-    pasta_origem = photos_base_dir / pasta_relativa.replace("/", os.sep)
+    pasta_origem = resolver_pasta_origem(photos_base_dir, pasta_relativa)
 
-    if not pasta_origem.is_dir():
+    if pasta_origem is None:
         avisos.append(f"{produto_pai['id']} / {variacao['sku']} → fotografia não encontrada (pasta '{pasta_relativa}' não existe).")
         return False
 
@@ -605,20 +727,43 @@ def resolver_fotografias_variacao(produto_pai, variacao, photos_base_dir: Path, 
         return False
 
     pasta_destino = output_images_dir / produto_pai["id"] / variacao["sku"]
-    pasta_destino.mkdir(parents=True, exist_ok=True)
 
     imagens_finais = []
-    for ficheiro in ficheiros:
-        destino = pasta_destino / ficheiro.name
-        shutil.copy2(ficheiro, destino)
-        imagens_finais.append(f"images/produtos/{produto_pai['id']}/{variacao['sku']}/{ficheiro.name}")
+    for indice, ficheiro in enumerate(ficheiros, start=1):
+        nome_seguro = f"{indice:02d}.webp"
+        destino = pasta_destino / nome_seguro
+        try:
+            otimizar_e_guardar_imagem(ficheiro, destino)
+        except Exception as exc:
+            avisos.append(f"{produto_pai['id']} / {variacao['sku']} → falha ao otimizar '{ficheiro.name}': {exc}")
+            continue
+        imagens_finais.append(f"images/produtos/{produto_pai['id']}/{variacao['sku']}/{nome_seguro}")
+
+    if not imagens_finais:
+        avisos.append(f"{produto_pai['id']} / {variacao['sku']} → nenhuma fotografia pôde ser otimizada (pasta '{pasta_relativa}').")
 
     variacao["galeria_fotos"] = imagens_finais
     variacao["foto_principal"] = imagens_finais[0] if imagens_finais else None
-    return True
+    return bool(imagens_finais)
+
+
+def limpar_pasta_imagens(output_images_dir: Path):
+    """
+    Apaga por completo images/produtos/ antes de a reconstruir.
+
+    A pasta é 100% derivada (nunca contém nada escrito à mão), por isso
+    é seguro começar sempre do zero em cada sincronização — é isto que
+    garante que originais pesados ou ficheiros de produtos já removidos
+    do Excel nunca ficam esquecidos no repositório a ocupar espaço.
+    """
+    if output_images_dir.exists():
+        shutil.rmtree(output_images_dir)
+    output_images_dir.mkdir(parents=True, exist_ok=True)
 
 
 def resolver_todas_fotografias(produtos, photos_base_dir: Path, output_images_dir: Path, avisos):
+    limpar_pasta_imagens(output_images_dir)
+
     encontradas = 0
     total = 0
     for produto in produtos:

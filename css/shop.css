@@ -1,7 +1,6 @@
 /* =========================================================
    Mestre do Pano — shop.css
    Página de loja (listagem + filtros) e página de produto
-   FASE 6.5B: animações, spinner custom, seletor dinâmico
    ========================================================= */
 
 /* ---------- Cabeçalho de página simples ---------- */
@@ -9,6 +8,7 @@
 .page-header {
   padding: var(--space-lg) 0 var(--space-md);
   border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
 }
 
 .page-header p { color: var(--color-ink-soft); }
@@ -17,34 +17,55 @@
 
 .shop-layout {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 240px 1fr;
   gap: var(--space-lg);
   padding: var(--space-lg) 0 var(--space-xl);
   align-items: start;
 }
 
+.filters {
+  position: sticky;
+  top: 6.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
 .filters h4 {
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   margin: 0 0 var(--space-sm);
   color: var(--color-primary);
 }
 
-.filter-group { margin-bottom: var(--space-md); }
+.filter-group { margin-bottom: var(--space-md); display: flex; flex-direction: column; gap: 0.15rem; }
 
 .filter-group label {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   font-size: 0.92rem;
   color: var(--color-ink-soft);
-  margin-bottom: 0.45rem;
+  padding: 0.4rem 0.3rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
+  transition: background-color 0.15s var(--ease), color 0.15s var(--ease);
+}
+
+.filter-group label:hover {
+  background: var(--color-bg-alt);
+  color: var(--color-ink);
 }
 
 .filter-group input[type="checkbox"] {
   accent-color: var(--color-primary);
+  width: 1.05rem;
+  height: 1.05rem;
 }
 
 .results-bar {
@@ -53,6 +74,7 @@
   align-items: center;
   margin-bottom: var(--space-md);
   font-size: 0.88rem;
+  font-weight: 600;
   color: var(--color-ink-soft);
 }
 
@@ -61,8 +83,8 @@
   font-size: 0.88rem;
   border: 1px solid var(--color-border);
   background: var(--color-surface);
-  padding: 0.35rem 0.6rem;
-  border-radius: var(--radius);
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--radius-sm);
 }
 
 .empty-state {
@@ -74,17 +96,20 @@
 
 .product-detail {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(var(--space-lg), 5vw, 4rem);
   padding: var(--space-lg) 0 var(--space-xl);
 }
+
+.product-gallery { position: sticky; top: 6.5rem; align-self: start; }
 
 .product-gallery .main-image {
   aspect-ratio: 1 / 1;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--color-surface);
+  box-shadow: var(--shadow-md);
 }
 
 .product-gallery .main-image img { width: 100%; height: 100%; object-fit: cover; }
@@ -95,11 +120,14 @@
   margin-bottom: var(--space-xs);
 }
 
+.product-info h1 { margin-bottom: 0.35rem; }
+
 .product-info .price {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--color-accent);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--color-accent-dark);
   margin-bottom: var(--space-sm);
+  font-family: var(--font-display);
 }
 
 .variant-select {
@@ -122,17 +150,19 @@
 .variant-options button {
   font-family: var(--font-body);
   font-size: 0.88rem;
-  padding: 0.5rem 0.9rem;
+  padding: 0.55rem 1rem;
   border: 1px solid var(--color-border);
   background: var(--color-surface);
-  border-radius: var(--radius);
+  border-radius: var(--radius-pill);
   cursor: pointer;
+  transition: border-color 0.15s var(--ease);
 }
 
 .variant-options button[aria-pressed="true"] {
   border-color: var(--color-primary);
   color: var(--color-primary);
   font-weight: 600;
+  background: var(--color-primary-soft);
 }
 
 .qty-row {
@@ -140,39 +170,41 @@
   align-items: center;
   gap: var(--space-sm);
   margin: var(--space-md) 0;
+  flex-wrap: wrap;
 }
 
-/* Spinner numérico custom (Fase 6.5B): botões [-] [N] [+] */
+/* Spinner numérico custom: botões [-] [N] [+] */
 .qty-btn {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2.6rem;
+  height: 2.6rem;
   font-size: 1.2rem;
   font-family: var(--font-body);
   color: var(--color-primary);
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: background-color 0.15s var(--ease), border-color 0.15s var(--ease);
   padding: 0;
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
 }
 
 .qty-btn:hover:not(:disabled) {
-  background: var(--color-bg);
+  background: var(--color-primary-soft);
   border-color: var(--color-primary);
 }
 
 .qty-btn:disabled {
-  color: var(--color-border);
+  color: var(--color-border-strong);
   cursor: not-allowed;
   opacity: 0.6;
 }
 
 .qty-input {
-  width: 3.2rem;
+  width: 3.4rem;
+  height: 2.6rem;
   text-align: center;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.95rem;
@@ -180,6 +212,8 @@
   background: var(--color-surface);
   padding: 0.5rem;
 }
+
+.qty-row .btn { flex: 1 1 auto; min-width: 12rem; }
 
 .product-meta {
   margin-top: var(--space-md);
@@ -192,14 +226,14 @@
 .product-meta dl {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.35rem var(--space-sm);
+  gap: 0.4rem var(--space-sm);
   margin: 0;
 }
 
 .product-meta dt { font-weight: 600; color: var(--color-ink); }
 .product-meta dd { margin: 0; }
 
-/* ---------- Descrição do produto (Fase 6.5B — abaixo do botão) ---------- */
+/* ---------- Descrição do produto ---------- */
 
 .product-description {
   margin-top: var(--space-md);
@@ -209,7 +243,7 @@
   white-space: pre-line;
 }
 
-/* ---------- Accordion de avisos (Fase 6.5B: discreto no rodapé) ---------- */
+/* ---------- Accordion de avisos ---------- */
 
 .product-accordion {
   margin-top: var(--space-md);
@@ -223,7 +257,11 @@
   font-weight: 600;
   color: var(--color-ink-soft);
   list-style: none;
+  padding: 0.3rem 0;
+  transition: color 0.15s var(--ease);
 }
+
+.product-accordion summary:hover { color: var(--color-ink); }
 
 .product-accordion summary::-webkit-details-marker { display: none; }
 
@@ -244,7 +282,7 @@
   white-space: pre-line;
 }
 
-/* ---------- Galeria estilo Temu: miniaturas (Fase 6.5B: fade-in, preload) ---------- */
+/* ---------- Galeria: miniaturas ---------- */
 
 .product-gallery .main-image img {
   transition: opacity 0.15s ease;
@@ -252,33 +290,35 @@
 
 .gallery-thumbs {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 0.6rem;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
   overflow-x: auto;
   padding-bottom: 0.2rem;
 }
 
 .gallery-thumb {
   flex: 0 0 auto;
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 4rem;
+  height: 4rem;
   padding: 0;
   border: 2px solid var(--color-border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   overflow: hidden;
   background: var(--color-surface);
   cursor: pointer;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s var(--ease), transform 0.15s var(--ease);
 }
 
 .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.gallery-thumb:hover { transform: translateY(-1px); }
 
 .gallery-thumb:hover,
 .gallery-thumb.is-active {
   border-color: var(--color-primary);
 }
 
-/* ---------- Seletor de variações (Fase 6.5B: dinâmico) ---------- */
+/* ---------- Seletor de variações ---------- */
 
 .variation-selector {
   margin: var(--space-md) 0;
@@ -287,7 +327,7 @@
 .variation-selector-label {
   font-size: 0.85rem;
   color: var(--color-ink-soft);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .variation-selector-label strong {
@@ -296,7 +336,7 @@
 
 .variation-options {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.7rem;
   flex-wrap: wrap;
 }
 
@@ -306,8 +346,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
-  width: 3.6rem;
+  gap: 0.35rem;
+  width: 3.8rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -316,21 +356,22 @@
 }
 
 .variation-swatch-circle {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   border: 2px solid var(--color-border);
   background: var(--swatch-color);
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  transition: border-color 0.15s var(--ease), transform 0.15s var(--ease), box-shadow 0.15s var(--ease);
+  box-shadow: var(--shadow-sm);
 }
 
 .variation-swatch:hover:not(:disabled) .variation-swatch-circle {
-  transform: scale(1.06);
+  transform: scale(1.08);
 }
 
 .variation-swatch.is-selected .variation-swatch-circle {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 3px var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-primary);
 }
 
 .variation-swatch-label {
@@ -356,13 +397,13 @@
   font-family: var(--font-body);
   font-size: 0.88rem;
   font-weight: 500;
-  padding: 0.55rem 1rem;
+  padding: 0.6rem 1.1rem;
   border: 1px solid var(--color-border);
   background: var(--color-surface);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   color: var(--color-ink);
-  transition: border-color 0.15s ease, color 0.15s ease;
+  transition: border-color 0.15s var(--ease), color 0.15s var(--ease), background-color 0.15s var(--ease);
 }
 
 .variation-pill:hover:not(:disabled) {
@@ -373,7 +414,7 @@
   border-color: var(--color-primary);
   color: var(--color-primary);
   font-weight: 600;
-  background: var(--color-bg);
+  background: var(--color-primary-soft);
 }
 
 .variation-pill.is-out-of-stock {
@@ -389,13 +430,24 @@
 }
 
 @media (max-width: 860px) {
-  .shop-layout { grid-template-columns: 1fr; }
+  .shop-layout { grid-template-columns: 1fr; gap: var(--space-md); }
   .filters {
+    position: static;
     display: flex;
+    flex-wrap: nowrap;
     gap: var(--space-lg);
     overflow-x: auto;
-    padding-bottom: var(--space-sm);
-    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-sm) var(--space-md);
+    box-shadow: none;
   }
-  .product-detail { grid-template-columns: 1fr; }
+  .filter-group { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0; }
+  .filter-group label {
+    white-space: nowrap;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    padding: 0.45rem 0.85rem;
+  }
+  .product-detail { grid-template-columns: 1fr; gap: var(--space-md); }
+  .product-gallery { position: static; }
+  .qty-row .btn { min-width: 100%; }
 }
