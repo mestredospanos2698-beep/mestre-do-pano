@@ -162,7 +162,7 @@
   font-size: 1.65rem;
   font-weight: 700;
   color: var(--color-accent-dark);
-  margin-bottom: var(--space-sm);
+  margin-bottom: 0.3rem;
   font-family: var(--font-display);
 }
 

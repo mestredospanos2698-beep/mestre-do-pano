@@ -68,6 +68,9 @@ const MestreDoPanoProducts = (() => {
 
   function cardTemplate(product) {
     const priceLabel = formatPrice(product.price);
+    const oldPriceHtml = product.old_price
+      ? `<span class="price-old">${formatPrice(product.old_price)}</span> `
+      : '';
     const totalStock = getTotalStock(product);
     const stock = stockLabel(totalStock);
     const firstImage = product.images && product.images[0];
@@ -82,7 +85,7 @@ const MestreDoPanoProducts = (() => {
           ${variationCount > 0 ? `<span class="variation-badge">+${variationCount} opções</span>` : ''}
         </div>
         <h3>${product.name}</h3>
-        <p class="price">${priceLabel}</p>
+        <p class="price">${oldPriceHtml}${priceLabel}</p>
         <p class="stock-note ${stock.className}">${stock.text}</p>
       </a>
     `;
@@ -307,6 +310,9 @@ const MestreDoPanoProducts = (() => {
     function currentPrice() {
       return grouped ? selectedVariation.preco : product.price;
     }
+    function currentOldPrice() {
+      return grouped ? selectedVariation.preco_riscado : product.old_price;
+    }
     function currentStock() {
       return grouped ? (selectedVariation.stock || 0) : product.stock;
     }
@@ -334,6 +340,10 @@ const MestreDoPanoProducts = (() => {
       const { mainHtml, thumbsHtml } = galleryTemplate(currentFotos(), currentTitle());
       const unitCount = currentUnitCount();
       const price = currentPrice();
+      const oldPrice = currentOldPrice();
+      const oldPriceHtml = oldPrice
+        ? `<span class="price-old">${formatPrice(oldPrice)}</span> `
+        : '';
       const packHtml = hasUnitPricingGeneric(price, unitCount)
         ? `
           <p class="pack-note">Pack com ${unitCount} unidades</p>
@@ -348,7 +358,7 @@ const MestreDoPanoProducts = (() => {
         </div>
         <div class="product-info">
           <h1 data-product-title>${currentTitle()}</h1>
-          <p class="price" data-product-price>${formatPrice(price)}</p>
+          <p class="price" data-product-price>${oldPriceHtml}${formatPrice(price)}</p>
           ${packHtml}
           <p class="stock-note ${stock.className}" data-product-stock>${stock.text}${!esgotado && grouped ? ` (${currentStock()} unidades)` : ''}</p>
 

@@ -97,7 +97,6 @@ CAMPOS_OBRIGATORIOS = ["titulo", "preco", "stock"]
 CAMPOS_INTERNOS = {"custo", "estado"}
 
 EXTENSOES_IMAGEM = {".jpg", ".jpeg", ".png", ".webp"}
-
 # --- Peso (coluna real do Stock.xlsx: "peso_kg", em QUILOGRAMAS) --------
 COLUNA_PESO = "peso_kg"
 
@@ -117,6 +116,9 @@ TIPOS_VARIACAO_VALIDOS = {"cor", "quantidade"}
 COLUNA_OCULTO = "oculto"
 COLUNA_DESTAQUE = "destaque"
 VALORES_SIM = {"sim", "yes", "true", "1"}
+
+# --- Preço riscado (coluna real do Stock.xlsx: "preco_riscado") ----------
+COLUNA_PRECO_RISCADO = "preco_riscado"
 
 # Palavras de cor conhecidas (nomes + modificadores comuns em PT) usadas
 # para (a) tornar o agrupamento robusto a pequenas diferenças entre o
@@ -192,6 +194,32 @@ def resolver_peso_g(dados: dict):
         return None, f"valor inválido (<= 0): {texto!r}"
 
     return peso_g, None
+
+
+def resolver_preco_riscado(dados: dict, preco_atual: float):
+    """
+    Lê a coluna 'preco_riscado' (o preço "de", antes do desconto, a
+    mostrar riscado junto do preço atual).
+
+    Só é usado quando é numérico E maior que o preço atual — vazio,
+    inválido, ou <= preço atual fica a None SILENCIOSAMENTE (não é um
+    erro, é o comportamento normal para um produto sem desconto: não
+    mostrar nada).
+    """
+    valor = dados.get(COLUNA_PRECO_RISCADO)
+    if valor is None or str(valor).strip() == "":
+        return None
+
+    texto = str(valor).strip()
+    try:
+        preco_riscado = round(float(texto.replace(",", ".")), 2)
+    except (TypeError, ValueError):
+        return None
+
+    if preco_riscado <= preco_atual:
+        return None
+
+    return preco_riscado
 
 
 def carregar_config():
@@ -498,10 +526,13 @@ def ler_produtos(caminho_excel: Path, nome_folha: str):
 
         pasta_fotos = normalizar_pasta_fotos(str(dados.get("pasta_fotos") or "").strip())
 
+        preco_atual = round(float(dados["preco"]), 2)
+        preco_riscado = resolver_preco_riscado(dados, preco_atual)
+
         linha_produto = {
             "titulo": titulo,
             "description": (str(dados.get("descricao")) or "").strip(),
-            "price": round(float(dados["preco"]), 2),
+            "price": preco_atual,
             "brand": (str(dados.get("marca")) or "").strip() or None,
             "category": categoria,
             "color": cor,
@@ -511,6 +542,7 @@ def ler_produtos(caminho_excel: Path, nome_folha: str):
             "weight_g": weight_g,
             "unit_count": unit_count,
             "_destaque": destaque,
+            "_preco_riscado": preco_riscado,
             "_pasta_fotos": pasta_fotos,
             "_agrupavel": agrupavel,
             "_tipo_variacao": tipo_variacao,
@@ -586,6 +618,7 @@ def agrupar_produtos(linhas_lidas, avisos):
                 "weight_g": linha["weight_g"],
                 "unit_count": linha["unit_count"],
                 "featured": linha["_destaque"],
+                "old_price": linha["_preco_riscado"],
                 "images": [],
                 "_pasta_fotos": linha["_pasta_fotos"],
             }
@@ -627,6 +660,7 @@ def agrupar_produtos(linhas_lidas, avisos):
                 "weight_g": linha["weight_g"],
                 "unit_count": linha["unit_count"],
                 "featured": linha["_destaque"],
+                "old_price": linha["_preco_riscado"],
                 "images": [],
                 "_pasta_fotos": linha["_pasta_fotos"],
             }
@@ -651,6 +685,7 @@ def agrupar_produtos(linhas_lidas, avisos):
             "additional_info": primeira["additional_info"],
             "variation_type": tipo_variacao,
             "featured": primeira["_destaque"],
+            "old_price": primeira["_preco_riscado"],
             "variations": [],
             "_pasta_fotos": None,  # produto-pai não tem fotos próprias
         }
@@ -664,6 +699,7 @@ def agrupar_produtos(linhas_lidas, avisos):
                 # e não só a do produto-pai — pedido explícito da Fase 6.5A.
                 "descricao": linha_variacao["description"],
                 "preco": linha_variacao["price"],
+                "preco_riscado": linha_variacao["_preco_riscado"],
                 "stock": linha_variacao["stock"],
                 "peso_kg": (
                     round(linha_variacao["weight_g"] / 1000, 3)
