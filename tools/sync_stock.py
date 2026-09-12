@@ -112,6 +112,12 @@ COLUNA_VARIACAO = "variação"
 VALORES_AGRUPAVEL_SIM = {"sim", "yes", "true", "1"}
 TIPOS_VARIACAO_VALIDOS = {"cor", "quantidade"}
 
+# --- Ocultar / destacar produtos (colunas "oculto" e "destaque") ---------
+# Mesmo conjunto de valores aceites que "agrupável", para consistência.
+COLUNA_OCULTO = "oculto"
+COLUNA_DESTAQUE = "destaque"
+VALORES_SIM = {"sim", "yes", "true", "1"}
+
 # Palavras de cor conhecidas (nomes + modificadores comuns em PT) usadas
 # para (a) tornar o agrupamento robusto a pequenas diferenças entre o
 # título e o texto exato da coluna "variação"/"cor" (ex.: título diz
@@ -436,6 +442,7 @@ def ler_produtos(caminho_excel: Path, nome_folha: str):
     linhas_lidas = []
     avisos = []
     erros = []
+    ocultos = 0
 
     for num_linha, linha in enumerate(linhas[1:], start=2):
         dados = dict(zip(cabecalho, linha))
@@ -455,6 +462,19 @@ def ler_produtos(caminho_excel: Path, nome_folha: str):
 
         categoria = (str(dados.get("categoria")) or "").strip() or None
         cor = (str(dados.get("cor")) or "").strip() or None
+
+        # Coluna "oculto": linha marcada oculto=sim não entra no products.json
+        # (fica de fora da loja e da página de produto), mas continua no
+        # Excel — nunca se apaga histórico/stock/fotos por causa disto.
+        # Vazio/em falta == não oculto (compatibilidade com produtos antigos).
+        oculto = str(dados.get(COLUNA_OCULTO) or "").strip().lower() in VALORES_SIM
+        if oculto:
+            ocultos += 1
+            continue
+
+        # Coluna "destaque": passa para o JSON como campo "featured" do
+        # produto — usado pela home page para decidir os "Em destaque".
+        destaque = str(dados.get(COLUNA_DESTAQUE) or "").strip().lower() in VALORES_SIM
 
         weight_g, motivo_invalido = resolver_peso_g(dados)
         if weight_g is None:
@@ -490,6 +510,7 @@ def ler_produtos(caminho_excel: Path, nome_folha: str):
             "stock": int(dados["stock"]),
             "weight_g": weight_g,
             "unit_count": unit_count,
+            "_destaque": destaque,
             "_pasta_fotos": pasta_fotos,
             "_agrupavel": agrupavel,
             "_tipo_variacao": tipo_variacao,
@@ -503,7 +524,7 @@ def ler_produtos(caminho_excel: Path, nome_folha: str):
 
         linhas_lidas.append(linha_produto)
 
-    return linhas_lidas, avisos, erros
+    return linhas_lidas, avisos, erros, ocultos
 
 
 def agrupar_produtos(linhas_lidas, avisos):
@@ -564,6 +585,7 @@ def agrupar_produtos(linhas_lidas, avisos):
                 "stock": linha["stock"],
                 "weight_g": linha["weight_g"],
                 "unit_count": linha["unit_count"],
+                "featured": linha["_destaque"],
                 "images": [],
                 "_pasta_fotos": linha["_pasta_fotos"],
             }
@@ -604,6 +626,7 @@ def agrupar_produtos(linhas_lidas, avisos):
                 "stock": linha["stock"],
                 "weight_g": linha["weight_g"],
                 "unit_count": linha["unit_count"],
+                "featured": linha["_destaque"],
                 "images": [],
                 "_pasta_fotos": linha["_pasta_fotos"],
             }
@@ -627,6 +650,7 @@ def agrupar_produtos(linhas_lidas, avisos):
             "material": primeira["material"],
             "additional_info": primeira["additional_info"],
             "variation_type": tipo_variacao,
+            "featured": primeira["_destaque"],
             "variations": [],
             "_pasta_fotos": None,  # produto-pai não tem fotos próprias
         }
@@ -816,8 +840,10 @@ def main():
     print(f"Lendo {caminho_excel.name}...\n")
     verificar_ficheiro_disponivel_localmente(caminho_excel)
 
-    linhas_lidas, avisos, erros = ler_produtos(caminho_excel, nome_folha)
+    linhas_lidas, avisos, erros, ocultos = ler_produtos(caminho_excel, nome_folha)
     print(f"Linhas de produto encontradas: {len(linhas_lidas)}")
+    if ocultos:
+        print(f"Linhas ocultas (oculto=sim, não incluídas no catálogo): {ocultos}")
 
     produtos = agrupar_produtos(linhas_lidas, avisos)
     num_grupos = sum(1 for p in produtos if "variations" in p)

@@ -88,8 +88,22 @@ const MestreDoPanoProducts = (() => {
     `;
   }
 
+  /**
+   * Seleciona produtos para a secção "Em destaque" da home page.
+   * Prioriza produtos com featured=true (campo "destaque" do Excel); se
+   * não houver suficientes para preencher `limit`, completa com os
+   * restantes produtos (não destacados), pela ordem do catálogo.
+   */
+  function selectFeatured(products, limit) {
+    const destacados = products.filter((p) => p.featured);
+    if (destacados.length >= limit) return destacados.slice(0, limit);
+
+    const restantes = products.filter((p) => !p.featured);
+    return destacados.concat(restantes).slice(0, limit);
+  }
+
   /** Renderiza uma grelha de produtos num contentor, com filtro opcional por categoria. */
-  async function renderGrid(containerSelector, { category = null, limit = null } = {}) {
+  async function renderGrid(containerSelector, { category = null, limit = null, featuredOnly = false } = {}) {
     const container = document.querySelector(containerSelector);
     if (!container) return;
 
@@ -97,7 +111,9 @@ const MestreDoPanoProducts = (() => {
     if (category) {
       products = products.filter((p) => p.category === category);
     }
-    if (limit) {
+    if (featuredOnly && limit) {
+      products = selectFeatured(products, limit);
+    } else if (limit) {
       products = products.slice(0, limit);
     }
 
@@ -459,7 +475,7 @@ const MestreDoPanoProducts = (() => {
 window.MestreDoPanoProducts = MestreDoPanoProducts;
 
 document.addEventListener('DOMContentLoaded', () => {
-  MestreDoPanoProducts.renderGrid('[data-featured-grid]', { limit: 4 });
+  MestreDoPanoProducts.renderGrid('[data-featured-grid]', { limit: 4, featuredOnly: true });
   MestreDoPanoProducts.initShopPage();
   MestreDoPanoProducts.initProductPage();
 });

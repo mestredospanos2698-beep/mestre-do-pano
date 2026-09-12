@@ -4,196 +4,197 @@
       "id": "pareo-de-praia-toalha-versatil-para-viagem-e-praia",
       "name": "🍊Pareô de Praia - Toalha Versátil para Viagem e Praia",
       "description": "✨ Pareô Verde Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: verde vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-      "price": 8,
+      "price": 8.0,
       "brand": "Sofelpos",
       "category": "Toalhas de praia",
       "material": "Algodão",
-      "additional_info": "Estado: Novo com etiquetas",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
       "variation_type": "cor",
+      "featured": false,
       "variations": [
         {
+          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-verde",
           "variacao": "Verde",
           "descricao": "✨ Pareô Verde Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: verde vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-          "preco": 8,
+          "preco": 8.0,
           "stock": 2,
           "peso_kg": 0.45,
           "weight_g": 450,
           "unidades": 1,
           "color": "Verde",
-          "foto_principal": "images/produtos/pareo verde/pareo verde.webp",
+          "foto_principal": "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-verde/01.webp",
           "galeria_fotos": [
-            "images/produtos/pareo verde/pareo verde.webp"
-          ],
-          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-verde"
+            "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-verde/01.webp"
+          ]
         },
         {
+          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-lilas",
           "variacao": "Lilás",
           "descricao": "✨ Pareô Lilas Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: lilas vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-          "preco": 8,
+          "preco": 8.0,
           "stock": 2,
           "peso_kg": 0.45,
           "weight_g": 450,
           "unidades": 1,
           "color": "Lilás",
-          "foto_principal": "images/produtos/pareo lilas/pareo lilas.webp",
+          "foto_principal": "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-lilas/01.webp",
           "galeria_fotos": [
-            "images/produtos/pareo lilas/pareo lilas.webp"
-          ],
-          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-lilas"
+            "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-lilas/01.webp"
+          ]
         },
         {
+          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-cinzento",
           "variacao": "Cinzento",
           "descricao": "✨ Pareô Cinzento Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: cinzento vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-          "preco": 8,
+          "preco": 8.0,
           "stock": 2,
           "peso_kg": 0.45,
           "weight_g": 450,
           "unidades": 1,
           "color": "Cinzento",
-          "foto_principal": "images/produtos/pareo cinzento/Pareo cinza.webp",
+          "foto_principal": "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-cinzento/01.webp",
           "galeria_fotos": [
-            "images/produtos/pareo cinzento/Pareo cinza.webp"
-          ],
-          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-cinzento"
+            "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-cinzento/01.webp"
+          ]
         },
         {
+          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-castanho",
           "variacao": "Castanho",
           "descricao": "✨ Pareô Castanho Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: castanho vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-          "preco": 8,
+          "preco": 8.0,
           "stock": 2,
           "peso_kg": 0.45,
           "weight_g": 450,
           "unidades": 1,
           "color": "Castanho",
-          "foto_principal": "images/produtos/pareo castanho/pareo castanho.webp",
+          "foto_principal": "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-castanho/01.webp",
           "galeria_fotos": [
-            "images/produtos/pareo castanho/pareo castanho.webp"
-          ],
-          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-castanho"
+            "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-castanho/01.webp"
+          ]
         },
         {
+          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-azul-marinho",
           "variacao": "Azul marinho",
           "descricao": "✨ Pareô Azul-marinho Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: azul-marinho vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-          "preco": 8,
+          "preco": 8.0,
           "stock": 2,
           "peso_kg": 0.45,
           "weight_g": 450,
           "unidades": 1,
           "color": "Azul-marinho",
-          "foto_principal": "images/produtos/pareo azul escuro/pareo azul escuro.webp",
+          "foto_principal": "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-azul-marinho/01.webp",
           "galeria_fotos": [
-            "images/produtos/pareo azul escuro/pareo azul escuro.webp"
-          ],
-          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-azul-marinho"
+            "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-azul-marinho/01.webp"
+          ]
         },
         {
+          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-azul",
           "variacao": "Azul",
           "descricao": "✨ Pareô Azul Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: azul vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-          "preco": 8,
+          "preco": 8.0,
           "stock": 2,
           "peso_kg": 0.45,
           "weight_g": 450,
           "unidades": 1,
           "color": "Azul",
-          "foto_principal": "images/produtos/pareo azul/pareo azul.webp",
+          "foto_principal": "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-azul/01.webp",
           "galeria_fotos": [
-            "images/produtos/pareo azul/pareo azul.webp"
-          ],
-          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-azul"
+            "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-azul/01.webp"
+          ]
         },
         {
+          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-amarelo",
           "variacao": "Amarelo",
           "descricao": "✨ Pareô Amarelo Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: amarelo vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-          "preco": 8,
+          "preco": 8.0,
           "stock": 2,
           "peso_kg": 0.45,
           "weight_g": 450,
           "unidades": 1,
           "color": "Amarelo",
-          "foto_principal": "images/produtos/pareo amarelo/pareo amarelo.webp",
+          "foto_principal": "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-amarelo/01.webp",
           "galeria_fotos": [
-            "images/produtos/pareo amarelo/pareo amarelo.webp"
-          ],
-          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-amarelo"
+            "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-amarelo/01.webp"
+          ]
         },
         {
+          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-rosa",
           "variacao": "Rosa",
           "descricao": "✨ Pareô Rosa Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: rosa vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-          "preco": 8,
+          "preco": 8.0,
           "stock": 2,
           "peso_kg": 0.45,
           "weight_g": 450,
           "unidades": 1,
           "color": "Rosa",
-          "foto_principal": "images/produtos/pareo rosa/pareo rosa.webp",
+          "foto_principal": "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-rosa/01.webp",
           "galeria_fotos": [
-            "images/produtos/pareo rosa/pareo rosa.webp"
-          ],
-          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-rosa"
+            "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-rosa/01.webp"
+          ]
         },
         {
+          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-turquesa",
           "variacao": "Turquesa",
           "descricao": "✨ Pareô Turquesa Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: turquesa vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-          "preco": 8,
+          "preco": 8.0,
           "stock": 2,
           "peso_kg": 0.45,
           "weight_g": 450,
           "unidades": 1,
           "color": "Turquesa",
-          "foto_principal": "images/produtos/pareo verde agua/pareo verde agua.webp",
+          "foto_principal": "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-turquesa/01.webp",
           "galeria_fotos": [
-            "images/produtos/pareo verde agua/pareo verde agua.webp"
-          ],
-          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-turquesa"
+            "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-turquesa/01.webp"
+          ]
         },
         {
+          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-vermelho",
           "variacao": "Vermelho",
           "descricao": "✨ Pareô Vermelho Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: vermelho vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-          "preco": 8,
+          "preco": 8.0,
           "stock": 2,
           "peso_kg": 0.45,
           "weight_g": 450,
           "unidades": 1,
           "color": "Vermelho",
-          "foto_principal": "images/produtos/pareo vermelho/pareo vermelho.webp",
+          "foto_principal": "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-vermelho/01.webp",
           "galeria_fotos": [
-            "images/produtos/pareo vermelho/pareo vermelho.webp"
-          ],
-          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-vermelho"
+            "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-vermelho/01.webp"
+          ]
         },
         {
+          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-bordeaux",
           "variacao": "Bordeaux",
           "descricao": "✨ Pareô Bordeaux Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: bordeaux vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-          "preco": 8,
+          "preco": 8.0,
           "stock": 2,
           "peso_kg": 0.45,
           "weight_g": 450,
           "unidades": 1,
           "color": "Bordeaux",
-          "foto_principal": "images/produtos/pareo vermelho escuro/pareo vermelho escuro.webp",
+          "foto_principal": "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-bordeaux/01.webp",
           "galeria_fotos": [
-            "images/produtos/pareo vermelho escuro/pareo vermelho escuro.webp"
-          ],
-          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-bordeaux"
+            "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-bordeaux/01.webp"
+          ]
         },
         {
+          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-vinho",
           "variacao": "Vinho",
           "descricao": "✨ Pareô Multi Listrado - Elegância e Conforto na Praia! ✨\nTransforme seu dia de praia em um verdadeiro momento de estilo com este lindo pareô. Perfeito para quem ama looks leves, femininos e cheios de charme!\nCaracterísticas:\n\nCores: multi vibrante com listras bege/creme (estilo clássico e versátil)\nMaterial: Tecido leve, macio e de secagem rápida (ideal para praia)\nTamanho: Aprox. 1,80m x 1,00m (grande o suficiente para usar como toalha ou canga)\nDetalhes: Franjas nas bordas + acabamento premium\nVersatilidade: Use como toalha de praia, canga, xale, lenço de praia, decoração ou até como saia pareô\n\nPerfeito para:\n\nDias ensolarados na praia ou piscina\nViagens de verão\nFotos incríveis no Instagram\nPresente para amigas, mães e namoradas\n\nQualidade: Toalha macia, resistente e com cores que não desbotam facilmente. Leve e fácil de carregar na bolsa de praia.\nDicas de uso:\n\nAmarre na cintura como saia\nUse como toalha\nColoque sobre o ombro como xale\nUse como pano de fundo para fotos\n\nEnvio: Embalado com cuidado para chegar perfeito para você!",
-          "preco": 8,
+          "preco": 8.0,
           "stock": 2,
           "peso_kg": 0.45,
           "weight_g": 450,
           "unidades": 1,
           "color": "Multi",
-          "foto_principal": "images/produtos/pareo vinho/pareo vinho.webp",
+          "foto_principal": "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-vinho/01.webp",
           "galeria_fotos": [
-            "images/produtos/pareo vinho/pareo vinho.webp"
-          ],
-          "sku": "pareo-de-praia-toalha-versatil-para-viagem-e-praia-vinho"
+            "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-vinho/01.webp"
+          ]
         }
       ],
       "images": [
-        "images/produtos/pareo verde/pareo verde.webp"
+        "images/produtos/pareo-de-praia-toalha-versatil-para-viagem-e-praia/pareo-de-praia-toalha-versatil-para-viagem-e-praia-verde/01.webp"
       ]
     },
     {
@@ -203,16 +204,17 @@
       "price": 6.5,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
-      "material": "Algodão",
-      "additional_info": "Estado: Novo com etiquetas",
       "color": "Multi",
-      "stock": 21,
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
+      "stock": 20,
       "weight_g": 480,
       "unit_count": 6,
+      "featured": true,
       "images": [
-        "images/produtos/tea time/Captura de ecr#U00e3 2026-07-16 162527.webp",
-        "images/produtos/tea time/Captura de ecr#U00e3 2026-07-16 162533.webp",
-        "images/produtos/tea time/Captura de ecr#U00e3 2026-07-16 162541.webp"
+        "images/produtos/conjunto-6-panos-de-cozinha-tea-time-100-algodao/01.webp",
+        "images/produtos/conjunto-6-panos-de-cozinha-tea-time-100-algodao/02.webp",
+        "images/produtos/conjunto-6-panos-de-cozinha-tea-time-100-algodao/03.webp"
       ]
     },
     {
@@ -222,15 +224,16 @@
       "price": 6.5,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
-      "material": "Algodão",
-      "additional_info": "Estado: Novo com etiquetas",
       "color": "Multi",
-      "stock": 27,
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
+      "stock": 26,
       "weight_g": 480,
       "unit_count": 6,
+      "featured": true,
       "images": [
-        "images/produtos/chavenas/Captura de ecr#U00e3 2026-07-16 163211.webp",
-        "images/produtos/chavenas/Captura de ecr#U00e3 2026-07-16 163222.webp"
+        "images/produtos/conjunto-6-panos-de-cozinha-chavenas-100-algodao/01.webp",
+        "images/produtos/conjunto-6-panos-de-cozinha-chavenas-100-algodao/02.webp"
       ]
     },
     {
@@ -240,116 +243,118 @@
       "price": 6.5,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
-      "material": "Algodão",
-      "additional_info": "Estado: Novo com etiquetas",
       "color": "Multi",
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
       "stock": 0,
       "weight_g": 480,
       "unit_count": 6,
+      "featured": false,
       "images": [
-        "images/produtos/fruto riscado/Captura de ecr#U00e3 2026-07-16 163044.webp",
-        "images/produtos/fruto riscado/Captura de ecr#U00e3 2026-07-16 163053.webp",
-        "images/produtos/fruto riscado/Captura de ecr#U00e3 2026-07-16 163100.webp"
+        "images/produtos/conjunto-6-panos-de-cozinha-frutos-riscados-100-algodao/01.webp",
+        "images/produtos/conjunto-6-panos-de-cozinha-frutos-riscados-100-algodao/02.webp",
+        "images/produtos/conjunto-6-panos-de-cozinha-frutos-riscados-100-algodao/03.webp"
       ]
     },
     {
-      "id": "conjunto-panos-de-favo-vermelho-algodao",
-      "name": "🧺 Conjunto Panos de Favo Vermelho - % Algodão",
+      "id": "conjunto-panos-de-favo-vermelho-100-algodao",
+      "name": "🧺 Conjunto Panos de Favo Vermelho - 100% Algodão",
       "description": "✨ Conjunto de 6 Panos de Cozinha – Qualidade, Conforto e Praticidade! ✨\n\nDê um toque de charme e praticidade à sua cozinha com este conjunto de 6 panos de cozinha. Com um design cuidado e um tecido agradável ao toque, são perfeitos para o uso diário e combinam facilmente com diferentes estilos de cozinha.\n\nCaracterísticas:\n\nQuantidade: Conjunto de 6 panos de cozinha\nMaterial: Algodão macio e resistente\nTamanho: Aprox. 50 x 50 cm\nDesign: Diferentes padrões e motivos decorativos, conforme a escolha\nConforto: Tecido macio e agradável ao toque\nAbsorção: Adequados para secar loiça e utilizar nas tarefas do dia a dia\nResistência: Tecido resistente ao desgaste e indicado para utilização frequente\nLavagem: Fáceis de lavar e manter\n\nPerfeitos para:\n🍽️ Secar loiça, copos e utensílios\n🧽 Limpar bancadas e superfícies\n☕ Utilizar durante momentos de chá ou café\n🏠 Dar um toque decorativo à cozinha\n🍴 Utilizar no dia a dia\n🎁 Oferecer como presente\nVersáteis e funcionais\n\nGraças ao seu tamanho de 50 x 50 cm, são fáceis de utilizar e guardar. Podem ser usados tanto para tarefas práticas como para complementar a decoração da cozinha.\n\nOs diferentes padrões e motivos disponíveis permitem escolher o estilo que melhor combina com o seu espaço.\n\nQualidade:\n\nUm conjunto pensado para quem procura praticidade, conforto e durabilidade num só produto. Ideais para ter sempre vários panos disponíveis na cozinha, seja para uso diário ou para ocasiões especiais.\n\nUm conjunto indispensável para qualquer cozinha!",
-      "price": 6.2,
+      "price": 6.5,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
       "material": "Algodão",
-      "additional_info": "Estado: Novo com etiquetas",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
       "variation_type": "quantidade",
+      "featured": true,
       "variations": [
         {
+          "sku": "conjunto-panos-de-favo-vermelho-100-algodao-6",
           "variacao": 6,
           "descricao": "✨ Conjunto de 6 Panos de Cozinha – Qualidade, Conforto e Praticidade! ✨\n\nDê um toque de charme e praticidade à sua cozinha com este conjunto de 6 panos de cozinha. Com um design cuidado e um tecido agradável ao toque, são perfeitos para o uso diário e combinam facilmente com diferentes estilos de cozinha.\n\nCaracterísticas:\n\nQuantidade: Conjunto de 6 panos de cozinha\nMaterial: Algodão macio e resistente\nTamanho: Aprox. 50 x 50 cm\nDesign: Diferentes padrões e motivos decorativos, conforme a escolha\nConforto: Tecido macio e agradável ao toque\nAbsorção: Adequados para secar loiça e utilizar nas tarefas do dia a dia\nResistência: Tecido resistente ao desgaste e indicado para utilização frequente\nLavagem: Fáceis de lavar e manter\n\nPerfeitos para:\n🍽️ Secar loiça, copos e utensílios\n🧽 Limpar bancadas e superfícies\n☕ Utilizar durante momentos de chá ou café\n🏠 Dar um toque decorativo à cozinha\n🍴 Utilizar no dia a dia\n🎁 Oferecer como presente\nVersáteis e funcionais\n\nGraças ao seu tamanho de 50 x 50 cm, são fáceis de utilizar e guardar. Podem ser usados tanto para tarefas práticas como para complementar a decoração da cozinha.\n\nOs diferentes padrões e motivos disponíveis permitem escolher o estilo que melhor combina com o seu espaço.\n\nQualidade:\n\nUm conjunto pensado para quem procura praticidade, conforto e durabilidade num só produto. Ideais para ter sempre vários panos disponíveis na cozinha, seja para uso diário ou para ocasiões especiais.\n\nUm conjunto indispensável para qualquer cozinha!",
-          "preco": 6.2,
-          "stock": 19,
+          "preco": 6.5,
+          "stock": 13,
           "peso_kg": 0.48,
           "weight_g": 480,
           "unidades": 6,
           "color": "Vermelho",
-          "foto_principal": "images/produtos/favo vermelho 6/6fv.webp",
+          "foto_principal": "images/produtos/conjunto-panos-de-favo-vermelho-100-algodao/conjunto-panos-de-favo-vermelho-100-algodao-6/01.webp",
           "galeria_fotos": [
-            "images/produtos/favo vermelho 6/6fv.webp",
-            "images/produtos/favo vermelho 6/6fvbd.webp",
-            "images/produtos/favo vermelho 6/fv.webp"
-          ],
-          "sku": "conjunto-panos-de-favo-vermelho-algodao-6"
+            "images/produtos/conjunto-panos-de-favo-vermelho-100-algodao/conjunto-panos-de-favo-vermelho-100-algodao-6/01.webp",
+            "images/produtos/conjunto-panos-de-favo-vermelho-100-algodao/conjunto-panos-de-favo-vermelho-100-algodao-6/02.webp"
+          ]
         },
         {
+          "sku": "conjunto-panos-de-favo-vermelho-100-algodao-18",
           "variacao": 18,
           "descricao": "✨ Conjunto de 18 Panos de Cozinha – Qualidade, Conforto e Praticidade! ✨\n\nDê um toque de charme e praticidade à sua cozinha com este conjunto de 18 panos de cozinha. Com um design cuidado e um tecido agradável ao toque, são perfeitos para o uso diário e combinam facilmente com diferentes estilos de cozinha.\n\nCaracterísticas:\n\nQuantidade: Conjunto de 18 panos de cozinha\nMaterial: Algodão macio e resistente\nTamanho: Aprox. 50 x 50 cm\nDesign: Diferentes padrões e motivos decorativos, conforme a escolha\nConforto: Tecido macio e agradável ao toque\nAbsorção: Adequados para secar loiça e utilizar nas tarefas do dia a dia\nResistência: Tecido resistente ao desgaste e indicado para utilização frequente\nLavagem: Fáceis de lavar e manter\n\nPerfeitos para:\n🍽️ Secar loiça, copos e utensílios\n🧽 Limpar bancadas e superfícies\n☕ Utilizar durante momentos de chá ou café\n🏠 Dar um toque decorativo à cozinha\n🍴 Utilizar no dia a dia\n🎁 Oferecer como presente\nVersáteis e funcionais\n\nGraças ao seu tamanho de 50 x 50 cm, são fáceis de utilizar e guardar. Podem ser usados tanto para tarefas práticas como para complementar a decoração da cozinha.\n\nOs diferentes padrões e motivos disponíveis permitem escolher o estilo que melhor combina com o seu espaço.\n\nQualidade:\n\nUm conjunto pensado para quem procura praticidade, conforto e durabilidade num só produto. Ideais para ter sempre vários panos disponíveis na cozinha, seja para uso diário ou para ocasiões especiais.\n\nUm conjunto indispensável para qualquer cozinha!",
-          "preco": 17,
+          "preco": 17.0,
           "stock": 0,
           "peso_kg": 1.4,
           "weight_g": 1400,
           "unidades": 18,
           "color": "Vermelho",
-          "foto_principal": "images/produtos/favo vermelho 18/18fv.webp",
+          "foto_principal": "images/produtos/conjunto-panos-de-favo-vermelho-100-algodao/conjunto-panos-de-favo-vermelho-100-algodao-18/01.webp",
           "galeria_fotos": [
-            "images/produtos/favo vermelho 18/18fv.webp",
-            "images/produtos/favo vermelho 18/fv.webp"
-          ],
-          "sku": "conjunto-panos-de-favo-vermelho-algodao-18"
+            "images/produtos/conjunto-panos-de-favo-vermelho-100-algodao/conjunto-panos-de-favo-vermelho-100-algodao-18/01.webp",
+            "images/produtos/conjunto-panos-de-favo-vermelho-100-algodao/conjunto-panos-de-favo-vermelho-100-algodao-18/02.webp"
+          ]
         }
       ],
       "images": [
-        "images/produtos/favo vermelho 6/6fv.webp"
+        "images/produtos/conjunto-panos-de-favo-vermelho-100-algodao/conjunto-panos-de-favo-vermelho-100-algodao-6/01.webp",
+        "images/produtos/conjunto-panos-de-favo-vermelho-100-algodao/conjunto-panos-de-favo-vermelho-100-algodao-6/02.webp"
       ]
     },
     {
-      "id": "conjunto-panos-de-favo-azul-algodao",
-      "name": "🧺 Conjunto Panos de Favo Azul - % Algodão",
+      "id": "conjunto-panos-de-favo-azul-100-algodao",
+      "name": "🧺 Conjunto Panos de Favo Azul - 100% Algodão",
       "description": "✨ Conjunto de 6 Panos de Cozinha – Qualidade, Conforto e Praticidade! ✨\n\nDê um toque de charme e praticidade à sua cozinha com este conjunto de 6 panos de cozinha. Com um design cuidado e um tecido agradável ao toque, são perfeitos para o uso diário e combinam facilmente com diferentes estilos de cozinha.\n\nCaracterísticas:\n\nQuantidade: Conjunto de 6 panos de cozinha\nMaterial: Algodão macio e resistente\nTamanho: Aprox. 50 x 50 cm\nDesign: Diferentes padrões e motivos decorativos, conforme a escolha\nConforto: Tecido macio e agradável ao toque\nAbsorção: Adequados para secar loiça e utilizar nas tarefas do dia a dia\nResistência: Tecido resistente ao desgaste e indicado para utilização frequente\nLavagem: Fáceis de lavar e manter\n\nPerfeitos para:\n🍽️ Secar loiça, copos e utensílios\n🧽 Limpar bancadas e superfícies\n☕ Utilizar durante momentos de chá ou café\n🏠 Dar um toque decorativo à cozinha\n🍴 Utilizar no dia a dia\n🎁 Oferecer como presente\nVersáteis e funcionais\n\nGraças ao seu tamanho de 50 x 50 cm, são fáceis de utilizar e guardar. Podem ser usados tanto para tarefas práticas como para complementar a decoração da cozinha.\n\nOs diferentes padrões e motivos disponíveis permitem escolher o estilo que melhor combina com o seu espaço.\n\nQualidade:\n\nUm conjunto pensado para quem procura praticidade, conforto e durabilidade num só produto. Ideais para ter sempre vários panos disponíveis na cozinha, seja para uso diário ou para ocasiões especiais.\n\nUm conjunto indispensável para qualquer cozinha!",
-      "price": 6.2,
+      "price": 6.5,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
       "material": "Algodão",
-      "additional_info": "Estado: Novo com etiquetas",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
       "variation_type": "quantidade",
+      "featured": true,
       "variations": [
         {
+          "sku": "conjunto-panos-de-favo-azul-100-algodao-6",
           "variacao": 6,
           "descricao": "✨ Conjunto de 6 Panos de Cozinha – Qualidade, Conforto e Praticidade! ✨\n\nDê um toque de charme e praticidade à sua cozinha com este conjunto de 6 panos de cozinha. Com um design cuidado e um tecido agradável ao toque, são perfeitos para o uso diário e combinam facilmente com diferentes estilos de cozinha.\n\nCaracterísticas:\n\nQuantidade: Conjunto de 6 panos de cozinha\nMaterial: Algodão macio e resistente\nTamanho: Aprox. 50 x 50 cm\nDesign: Diferentes padrões e motivos decorativos, conforme a escolha\nConforto: Tecido macio e agradável ao toque\nAbsorção: Adequados para secar loiça e utilizar nas tarefas do dia a dia\nResistência: Tecido resistente ao desgaste e indicado para utilização frequente\nLavagem: Fáceis de lavar e manter\n\nPerfeitos para:\n🍽️ Secar loiça, copos e utensílios\n🧽 Limpar bancadas e superfícies\n☕ Utilizar durante momentos de chá ou café\n🏠 Dar um toque decorativo à cozinha\n🍴 Utilizar no dia a dia\n🎁 Oferecer como presente\nVersáteis e funcionais\n\nGraças ao seu tamanho de 50 x 50 cm, são fáceis de utilizar e guardar. Podem ser usados tanto para tarefas práticas como para complementar a decoração da cozinha.\n\nOs diferentes padrões e motivos disponíveis permitem escolher o estilo que melhor combina com o seu espaço.\n\nQualidade:\n\nUm conjunto pensado para quem procura praticidade, conforto e durabilidade num só produto. Ideais para ter sempre vários panos disponíveis na cozinha, seja para uso diário ou para ocasiões especiais.\n\nUm conjunto indispensável para qualquer cozinha!",
-          "preco": 6.2,
-          "stock": 20,
+          "preco": 6.5,
+          "stock": 13,
           "peso_kg": 0.48,
           "weight_g": 480,
           "unidades": 6,
           "color": "Azul",
-          "foto_principal": "images/produtos/favo azul 6/6fa.webp",
+          "foto_principal": "images/produtos/conjunto-panos-de-favo-azul-100-algodao/conjunto-panos-de-favo-azul-100-algodao-6/01.webp",
           "galeria_fotos": [
-            "images/produtos/favo azul 6/6fa.webp",
-            "images/produtos/favo azul 6/6fvb.webp",
-            "images/produtos/favo azul 6/6fvc.webp",
-            "images/produtos/favo azul 6/fa.webp"
-          ],
-          "sku": "conjunto-panos-de-favo-azul-algodao-6"
+            "images/produtos/conjunto-panos-de-favo-azul-100-algodao/conjunto-panos-de-favo-azul-100-algodao-6/01.webp",
+            "images/produtos/conjunto-panos-de-favo-azul-100-algodao/conjunto-panos-de-favo-azul-100-algodao-6/02.webp"
+          ]
         },
         {
+          "sku": "conjunto-panos-de-favo-azul-100-algodao-18",
           "variacao": 18,
           "descricao": "✨ Conjunto de 18 Panos de Cozinha – Qualidade, Conforto e Praticidade! ✨\n\nDê um toque de charme e praticidade à sua cozinha com este conjunto de 18 panos de cozinha. Com um design cuidado e um tecido agradável ao toque, são perfeitos para o uso diário e combinam facilmente com diferentes estilos de cozinha.\n\nCaracterísticas:\n\nQuantidade: Conjunto de 18 panos de cozinha\nMaterial: Algodão macio e resistente\nTamanho: Aprox. 50 x 50 cm\nDesign: Diferentes padrões e motivos decorativos, conforme a escolha\nConforto: Tecido macio e agradável ao toque\nAbsorção: Adequados para secar loiça e utilizar nas tarefas do dia a dia\nResistência: Tecido resistente ao desgaste e indicado para utilização frequente\nLavagem: Fáceis de lavar e manter\n\nPerfeitos para:\n🍽️ Secar loiça, copos e utensílios\n🧽 Limpar bancadas e superfícies\n☕ Utilizar durante momentos de chá ou café\n🏠 Dar um toque decorativo à cozinha\n🍴 Utilizar no dia a dia\n🎁 Oferecer como presente\nVersáteis e funcionais\n\nGraças ao seu tamanho de 50 x 50 cm, são fáceis de utilizar e guardar. Podem ser usados tanto para tarefas práticas como para complementar a decoração da cozinha.\n\nOs diferentes padrões e motivos disponíveis permitem escolher o estilo que melhor combina com o seu espaço.\n\nQualidade:\n\nUm conjunto pensado para quem procura praticidade, conforto e durabilidade num só produto. Ideais para ter sempre vários panos disponíveis na cozinha, seja para uso diário ou para ocasiões especiais.\n\nUm conjunto indispensável para qualquer cozinha!",
-          "preco": 17,
+          "preco": 17.0,
           "stock": 0,
           "peso_kg": 1.4,
           "weight_g": 1400,
           "unidades": 18,
           "color": "Azul",
-          "foto_principal": "images/produtos/favo azul 18/18fa.webp",
+          "foto_principal": "images/produtos/conjunto-panos-de-favo-azul-100-algodao/conjunto-panos-de-favo-azul-100-algodao-18/01.webp",
           "galeria_fotos": [
-            "images/produtos/favo azul 18/18fa.webp",
-            "images/produtos/favo azul 18/18fv.webp",
-            "images/produtos/favo azul 18/fa.webp"
-          ],
-          "sku": "conjunto-panos-de-favo-azul-algodao-18"
+            "images/produtos/conjunto-panos-de-favo-azul-100-algodao/conjunto-panos-de-favo-azul-100-algodao-18/01.webp",
+            "images/produtos/conjunto-panos-de-favo-azul-100-algodao/conjunto-panos-de-favo-azul-100-algodao-18/02.webp",
+            "images/produtos/conjunto-panos-de-favo-azul-100-algodao/conjunto-panos-de-favo-azul-100-algodao-18/03.webp"
+          ]
         }
       ],
       "images": [
-        "images/produtos/favo azul 6/6fa.webp"
+        "images/produtos/conjunto-panos-de-favo-azul-100-algodao/conjunto-panos-de-favo-azul-100-algodao-6/01.webp",
+        "images/produtos/conjunto-panos-de-favo-azul-100-algodao/conjunto-panos-de-favo-azul-100-algodao-6/02.webp"
       ]
     },
     {
@@ -359,14 +364,15 @@
       "price": 6.5,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
-      "material": "Algodão",
-      "additional_info": "Estado: Novo com etiquetas",
       "color": "Multi",
-      "stock": 24,
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
+      "stock": 21,
       "weight_g": 480,
       "unit_count": 6,
+      "featured": true,
       "images": [
-        "images/produtos/bolas/8205a9b3-f90c-474b-833d-c0134314e170.webp"
+        "images/produtos/conjunto-6-panos-de-bolas-100-algodao/01.webp"
       ]
     },
     {
@@ -376,48 +382,51 @@
       "price": 6.5,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
-      "material": "Algodão",
-      "additional_info": "Estado: Novo com etiquetas",
       "color": "Multi",
-      "stock": 5,
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
+      "stock": 3,
       "weight_g": 480,
       "unit_count": 6,
+      "featured": false,
       "images": [
-        "images/produtos/pimento/Pimento.webp"
+        "images/produtos/conjunto-6-panos-de-pimento-100-algodao/01.webp"
       ]
     },
     {
       "id": "conjunto-6-panos-de-expresso-cinzento-100-algodao",
       "name": "🧺 Conjunto 6 Panos de Expresso Cinzento - 100% Algodão",
       "description": "✨ Conjunto de 6 Panos de Cozinha – Qualidade, Conforto e Praticidade! ✨\n\nDê um toque de charme e praticidade à sua cozinha com este conjunto de 6 panos de cozinha. Com um design cuidado e um tecido agradável ao toque, são perfeitos para o uso diário e combinam facilmente com diferentes estilos de cozinha.\n\nCaracterísticas:\n\nQuantidade: Conjunto de 6 panos de cozinha\nMaterial: Algodão macio e resistente\nTamanho: Aprox. 50 x 50 cm\nDesign: Diferentes padrões e motivos decorativos, conforme a escolha\nConforto: Tecido macio e agradável ao toque\nAbsorção: Adequados para secar loiça e utilizar nas tarefas do dia a dia\nResistência: Tecido resistente ao desgaste e indicado para utilização frequente\nLavagem: Fáceis de lavar e manter\n\nPerfeitos para:\n🍽️ Secar loiça, copos e utensílios\n🧽 Limpar bancadas e superfícies\n☕ Utilizar durante momentos de chá ou café\n🏠 Dar um toque decorativo à cozinha\n🍴 Utilizar no dia a dia\n🎁 Oferecer como presente\nVersáteis e funcionais\n\nGraças ao seu tamanho de 50 x 50 cm, são fáceis de utilizar e guardar. Podem ser usados tanto para tarefas práticas como para complementar a decoração da cozinha.\n\nOs diferentes padrões e motivos disponíveis permitem escolher o estilo que melhor combina com o seu espaço.\n\nQualidade:\n\nUm conjunto pensado para quem procura praticidade, conforto e durabilidade num só produto. Ideais para ter sempre vários panos disponíveis na cozinha, seja para uso diário ou para ocasiões especiais.\n\nUm conjunto indispensável para qualquer cozinha!",
-      "price": 8,
+      "price": 8.2,
       "brand": "Sofelpos",
       "category": "Toalhas de mão premium",
-      "material": "Algodão",
-      "additional_info": "Estado: Novo com etiquetas",
       "color": "Cinzento",
-      "stock": 14,
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
+      "stock": 11,
       "weight_g": 600,
       "unit_count": 6,
+      "featured": false,
       "images": [
-        "images/produtos/Expresso cinzento/expresso cinzeto.webp"
+        "images/produtos/conjunto-6-panos-de-expresso-cinzento-100-algodao/01.webp"
       ]
     },
     {
       "id": "conjunto-6-panos-de-expresso-bege-100-algodao",
       "name": "🧺 Conjunto 6 Panos de Expresso Bege - 100% Algodão",
       "description": "✨ Conjunto de 6 Panos de Cozinha – Qualidade, Conforto e Praticidade! ✨\n\nDê um toque de charme e praticidade à sua cozinha com este conjunto de 6 panos de cozinha. Com um design cuidado e um tecido agradável ao toque, são perfeitos para o uso diário e combinam facilmente com diferentes estilos de cozinha.\n\nCaracterísticas:\n\nQuantidade: Conjunto de 6 panos de cozinha\nMaterial: Algodão macio e resistente\nTamanho: Aprox. 50 x 50 cm\nDesign: Diferentes padrões e motivos decorativos, conforme a escolha\nConforto: Tecido macio e agradável ao toque\nAbsorção: Adequados para secar loiça e utilizar nas tarefas do dia a dia\nResistência: Tecido resistente ao desgaste e indicado para utilização frequente\nLavagem: Fáceis de lavar e manter\n\nPerfeitos para:\n🍽️ Secar loiça, copos e utensílios\n🧽 Limpar bancadas e superfícies\n☕ Utilizar durante momentos de chá ou café\n🏠 Dar um toque decorativo à cozinha\n🍴 Utilizar no dia a dia\n🎁 Oferecer como presente\nVersáteis e funcionais\n\nGraças ao seu tamanho de 50 x 50 cm, são fáceis de utilizar e guardar. Podem ser usados tanto para tarefas práticas como para complementar a decoração da cozinha.\n\nOs diferentes padrões e motivos disponíveis permitem escolher o estilo que melhor combina com o seu espaço.\n\nQualidade:\n\nUm conjunto pensado para quem procura praticidade, conforto e durabilidade num só produto. Ideais para ter sempre vários panos disponíveis na cozinha, seja para uso diário ou para ocasiões especiais.\n\nUm conjunto indispensável para qualquer cozinha!",
-      "price": 8,
+      "price": 8.2,
       "brand": "Sofelpos",
       "category": "Toalhas de mão premium",
-      "material": "Algodão",
-      "additional_info": "Estado: Novo com etiquetas",
       "color": "Bege",
-      "stock": 14,
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
+      "stock": 11,
       "weight_g": 600,
       "unit_count": 6,
+      "featured": false,
       "images": [
-        "images/produtos/Expresso bege/11baa505-00d7-4eb7-a405-306b75566fd4.webp"
+        "images/produtos/conjunto-6-panos-de-expresso-bege-100-algodao/01.webp"
       ]
     },
     {
@@ -427,14 +436,15 @@
       "price": 6.5,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
-      "material": "Algodão",
-      "additional_info": "Estado: Novo com etiquetas",
       "color": "Multi",
-      "stock": 5,
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
+      "stock": 3,
       "weight_g": 480,
       "unit_count": 6,
+      "featured": false,
       "images": [
-        "images/produtos/adega/adega.webp"
+        "images/produtos/conjunto-6-panos-de-adega-100-algodao/01.webp"
       ]
     },
     {
@@ -444,14 +454,15 @@
       "price": 6.5,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
-      "material": "Algodão",
-      "additional_info": "Estado: Muito bom",
       "color": "Multi",
-      "stock": 26,
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
+      "stock": 25,
       "weight_g": 480,
       "unit_count": 6,
+      "featured": false,
       "images": [
-        "images/produtos/tropical/PBZ50.webp"
+        "images/produtos/conjunto-6-panos-de-tropical-100-algodao/01.webp"
       ]
     },
     {
@@ -461,14 +472,15 @@
       "price": 6.5,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
-      "material": "Algodão",
-      "additional_info": "Estado: Muito bom",
       "color": "Multi",
-      "stock": 16,
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
+      "stock": 15,
       "weight_g": 480,
       "unit_count": 6,
+      "featured": false,
       "images": [
-        "images/produtos/folha/n1bPx.webp"
+        "images/produtos/conjunto-6-panos-de-folha-100-algodao/01.webp"
       ]
     },
     {
@@ -478,14 +490,15 @@
       "price": 6.5,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
-      "material": "Algodão",
-      "additional_info": "Estado: Muito bom",
       "color": "Multi",
-      "stock": 8,
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
+      "stock": 6,
       "weight_g": 480,
       "unit_count": 6,
+      "featured": false,
       "images": [
-        "images/produtos/italia/ONUEZ.webp"
+        "images/produtos/conjunto-6-panos-de-italia-100-algodao/01.webp"
       ]
     },
     {
@@ -495,19 +508,20 @@
       "price": 6.5,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
-      "material": "Algodão",
-      "additional_info": "Estado: Muito bom",
       "color": "Multi",
-      "stock": 25,
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
+      "stock": 23,
       "weight_g": 480,
       "unit_count": 6,
+      "featured": false,
       "images": [
-        "images/produtos/kasalinda/8IAzf.webp",
-        "images/produtos/kasalinda/8dCQl.webp",
-        "images/produtos/kasalinda/9cMDw.webp",
-        "images/produtos/kasalinda/QiMRQ.webp",
-        "images/produtos/kasalinda/licI8.webp",
-        "images/produtos/kasalinda/nYN7E.webp"
+        "images/produtos/conjunto-6-panos-de-variados-100-algodao/01.webp",
+        "images/produtos/conjunto-6-panos-de-variados-100-algodao/02.webp",
+        "images/produtos/conjunto-6-panos-de-variados-100-algodao/03.webp",
+        "images/produtos/conjunto-6-panos-de-variados-100-algodao/04.webp",
+        "images/produtos/conjunto-6-panos-de-variados-100-algodao/05.webp",
+        "images/produtos/conjunto-6-panos-de-variados-100-algodao/06.webp"
       ]
     },
     {
@@ -517,17 +531,18 @@
       "price": 4.4,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
-      "material": "Algodão",
-      "additional_info": "Estado: Muito bom",
       "color": "Multi",
-      "stock": 26,
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
+      "stock": 25,
       "weight_g": 380,
       "unit_count": 4,
+      "featured": false,
       "images": [
-        "images/produtos/morangos/AxmmH.webp",
-        "images/produtos/morangos/NvrN3.webp",
-        "images/produtos/morangos/n28uL.webp",
-        "images/produtos/morangos/oo0FV.webp"
+        "images/produtos/conjunto-4-panos-de-morangos-100-algodao/01.webp",
+        "images/produtos/conjunto-4-panos-de-morangos-100-algodao/02.webp",
+        "images/produtos/conjunto-4-panos-de-morangos-100-algodao/03.webp",
+        "images/produtos/conjunto-4-panos-de-morangos-100-algodao/04.webp"
       ]
     },
     {
@@ -537,17 +552,18 @@
       "price": 7.4,
       "brand": "Sofelpos",
       "category": "Toalhas de mão",
-      "material": "Algodão",
-      "additional_info": "Estado: Muito bom",
       "color": "Multi",
+      "material": "Algodão",
+      "additional_info": "Avisos de segurança: Manter afastado de chamas diretas. Não deixar em contacto prolongado com superfícies quentes (fogão, forno) para evitar risco de incêndio. Não adequado como brinquedo para crianças. Composição do material: 100% algodão",
       "stock": 12,
       "weight_g": 800,
-      "unit_count": 1,
+      "unit_count": null,
+      "featured": false,
       "images": [
-        "images/produtos/escuro/4pXRZ.webp",
-        "images/produtos/escuro/MNvIy.webp",
-        "images/produtos/escuro/Mimey.webp",
-        "images/produtos/escuro/T9sb1.webp"
+        "images/produtos/conjunto-4-panos-de-escuros-100-algodao/01.webp",
+        "images/produtos/conjunto-4-panos-de-escuros-100-algodao/02.webp",
+        "images/produtos/conjunto-4-panos-de-escuros-100-algodao/03.webp",
+        "images/produtos/conjunto-4-panos-de-escuros-100-algodao/04.webp"
       ]
     }
   ]
