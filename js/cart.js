@@ -38,7 +38,7 @@ const MestreDoPanoCart = (() => {
     return `<p class="pack-note-small">Pack com ${item.unitCount} unidades · ${formatPrice(unitPrice)} / unidade</p>`;
   }
 
-  function addItem({ productId, name, price, unitCount, image, variant, qty }) {
+  function addItem({ productId, sku, name, price, unitCount, image, variant, qty }) {
     const items = getItems();
     const key = lineKey(productId, variant);
     const existing = items.find((i) => lineKey(i.productId, i.variant) === key);
@@ -46,7 +46,10 @@ const MestreDoPanoCart = (() => {
     if (existing) {
       existing.qty += qty;
     } else {
-      items.push({ productId, name, price, unitCount: unitCount || null, image, variant, qty });
+      // `sku` é o identificador exato (variação incluída) que o backend usa
+      // para validar preço/stock — nunca confundir com `productId`, que
+      // pode representar vários SKUs quando o produto tem variações.
+      items.push({ productId, sku: sku || productId, name, price, unitCount: unitCount || null, image, variant, qty });
     }
     saveItems(items);
   }

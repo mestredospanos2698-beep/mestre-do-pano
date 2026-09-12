@@ -604,7 +604,7 @@ const MestreDoPanoCheckout = (() => {
           } : null,
         },
         deliveryMethod: selectedMethodId,
-        items: cartItems.map((item) => ({ productId: item.productId, qty: item.qty })),
+        items: cartItems.map((item) => ({ sku: item.sku || item.productId, qty: item.qty })),
       });
 
       backendOrderNumber = result.orderNumber;

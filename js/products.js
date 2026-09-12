@@ -127,15 +127,23 @@ const MestreDoPanoProducts = (() => {
     }
 
     const filterInputs = document.querySelectorAll('[data-category-filter]');
+    const searchInput = document.querySelector('[data-search-input]');
+
+    function matchesSearch(product, termo) {
+      if (!termo) return true;
+      const alvo = `${product.name} ${product.description || ''}`.toLowerCase();
+      return alvo.includes(termo);
+    }
 
     function applyFilters() {
       const checked = Array.from(filterInputs)
         .filter((input) => input.checked)
         .map((input) => input.value);
+      const termo = (searchInput?.value || '').trim().toLowerCase();
 
-      const filtered = checked.length === 0
-        ? products
-        : products.filter((p) => checked.includes(p.category));
+      const filtered = products
+        .filter((p) => checked.length === 0 || checked.includes(p.category))
+        .filter((p) => matchesSearch(p, termo));
 
       grid.innerHTML = filtered.length
         ? filtered.map(cardTemplate).join('')
@@ -145,6 +153,13 @@ const MestreDoPanoProducts = (() => {
         resultsCount.textContent = `${filtered.length} produto${filtered.length === 1 ? '' : 's'}`;
       }
     }
+
+    // Debounce simples para não re-renderizar a cada tecla premida.
+    let searchTimer = null;
+    searchInput?.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(applyFilters, 150);
+    });
 
     filterInputs.forEach((input) => input.addEventListener('change', applyFilters));
     applyFilters();
@@ -419,6 +434,7 @@ const MestreDoPanoProducts = (() => {
 
         window.MestreDoPanoCart.addItem({
           productId: product.id,
+          sku: grouped ? selectedVariation.sku : product.id,
           name: currentTitle(),
           price: currentPrice(),
           unitCount: currentUnitCount() || null,
@@ -426,6 +442,8 @@ const MestreDoPanoProducts = (() => {
           variant: grouped ? String(selectedVariation.variacao) : (product.color || null),
           qty,
         });
+
+        window.showToast?.(`${currentTitle()} adicionado ao carrinho.`, 'success');
       });
     }
 

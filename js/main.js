@@ -28,6 +28,33 @@ function initFooterYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
+/**
+ * Toast notification simples (substitui alert() nativo).
+ * type: 'success' | 'error' | 'info'
+ */
+function showToast(message, type = 'success') {
+  let container = document.querySelector('.toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'toast-container';
+    container.setAttribute('aria-live', 'polite');
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.textContent = message;
+  container.appendChild(toast);
+
+  requestAnimationFrame(() => toast.classList.add('is-visible'));
+
+  setTimeout(() => {
+    toast.classList.remove('is-visible');
+    setTimeout(() => toast.remove(), 250);
+  }, 2800);
+}
+window.showToast = showToast;
+
 /** Utilitário simples de formatação de preço em euros. */
 function formatPrice(value) {
   return new Intl.NumberFormat('pt-PT', {

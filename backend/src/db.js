@@ -71,30 +71,46 @@ async function getStock(db, sku) {
 async function syncStockFromCatalog(db, products) {
   const results = { created: 0, updated: 0, unchanged: 0 };
 
-  for (const product of products) {
-    if (!product || !product.id || typeof product.stock !== 'number') continue;
+  async function syncOne(sku, catalogStock) {
+    if (!sku || typeof catalogStock !== 'number') return;
 
-    const existing = await getStock(db, product.id);
+    const existing = await getStock(db, sku);
     const { catalog_stock, available_stock } = computeSyncedAvailableStock({
       existing,
-      newCatalogStock: product.stock,
+      newCatalogStock: catalogStock,
     });
 
     if (!existing) {
       await db
         .prepare('INSERT INTO stock (sku, catalog_stock, available_stock, updated_at) VALUES (?, ?, ?, ?)')
-        .bind(product.id, catalog_stock, available_stock, nowIso())
+        .bind(sku, catalog_stock, available_stock, nowIso())
         .run();
       results.created += 1;
     } else if (existing.catalog_stock !== catalog_stock || existing.available_stock !== available_stock) {
       await db
         .prepare('UPDATE stock SET catalog_stock = ?, available_stock = ?, updated_at = ? WHERE sku = ?')
-        .bind(catalog_stock, available_stock, nowIso(), product.id)
+        .bind(catalog_stock, available_stock, nowIso(), sku)
         .run();
       results.updated += 1;
     } else {
       results.unchanged += 1;
     }
+  }
+
+  for (const product of products) {
+    if (!product || !product.id) continue;
+
+    // Produtos agrupados (com variações: cor/quantidade) têm stock próprio
+    // por SKU de variação — o produto "pai" nunca traz `stock` no topo.
+    if (Array.isArray(product.variations) && product.variations.length > 0) {
+      for (const variation of product.variations) {
+        if (!variation || !variation.sku) continue;
+        await syncOne(variation.sku, variation.stock);
+      }
+      continue;
+    }
+
+    await syncOne(product.id, product.stock);
   }
 
   return results;

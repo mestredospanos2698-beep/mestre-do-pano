@@ -56,7 +56,42 @@ export function computeQuote({ items, country, method }, { catalog, countriesCon
     throw new QuoteError(ERROR_CODES.EMPTY_CART, 'O carrinho está vazio.');
   }
 
-  const productsById = new Map((catalog.products || []).map((p) => [p.id, p]));
+  // Índice de SKU → dados de venda (preço/stock/peso/nome).
+  // Produtos simples indexam-se pelo próprio `product.id`. Produtos
+  // agrupados (variation_type 'cor' | 'quantidade') NUNCA têm preço/stock/
+  // peso fiáveis no nível do produto "pai" — cada variação tem o seu
+  // próprio `sku`, `preco`, `stock` e `peso_kg`/`weight_g` (ver
+  // data/products.json e product.html). Indexamos por variação para que o
+  // servidor nunca confie no preço do produto pai para um item que na
+  // realidade é uma variação específica.
+  const skuIndex = new Map();
+  for (const product of catalog.products || []) {
+    if (!product || !product.id) continue;
+
+    if (Array.isArray(product.variations) && product.variations.length > 0) {
+      for (const variation of product.variations) {
+        if (!variation || !variation.sku) continue;
+        skuIndex.set(variation.sku, {
+          name: `${product.name}${variation.variacao ? ` (${variation.variacao})` : ''}`,
+          price: variation.preco,
+          stock: variation.stock,
+          weight_g: typeof variation.weight_g === 'number'
+            ? variation.weight_g
+            : (typeof variation.peso_kg === 'number' ? variation.peso_kg * 1000 : undefined),
+          unit_count: variation.unidades,
+        });
+      }
+      continue;
+    }
+
+    skuIndex.set(product.id, {
+      name: product.name,
+      price: product.price,
+      stock: product.stock,
+      weight_g: product.weight_g,
+      unit_count: product.unit_count,
+    });
+  }
 
   const lineItems = [];
   let subtotalCents = 0;
@@ -70,7 +105,7 @@ export function computeQuote({ items, country, method }, { catalog, countriesCon
       throw new QuoteError(ERROR_CODES.INVALID_QTY, `Quantidade inválida para ${sku || '(sem SKU)'}.`, { sku, qty: rawItem && rawItem.qty });
     }
 
-    const product = productsById.get(sku);
+    const product = skuIndex.get(sku);
     if (!product) {
       throw new QuoteError(ERROR_CODES.INVALID_SKU, `Produto desconhecido: ${sku}.`, { sku });
     }
